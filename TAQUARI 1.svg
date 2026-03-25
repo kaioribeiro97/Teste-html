@@ -23,12 +23,12 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
-     inkscape:zoom="0.52552083"
-     inkscape:cx="960"
-     inkscape:cy="539.46482"
+     inkscape:zoom="0.74319869"
+     inkscape:cx="931.78313"
+     inkscape:cy="397.60565"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
-     inkscape:window-x="-8"
+     inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
@@ -39,6 +39,24 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
+       style="fill:#000000;stroke-width:1.9572"
+       id="rect1-5-4-8"
+       width="825.37299"
+       height="1.1651083"
+       x="564.49463"
+       y="-563.28571"
+       transform="scale(1,-1)" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
+       id="rect1"
+       width="245.095"
+       height="82.329308"
+       x="319.85413"
+       y="-602.80194"
+       rx="0.021734046"
+       ry="0.023553507"
+       transform="scale(1,-1)" />
+    <rect
        style="fill:#000000;stroke-width:1.88017"
        id="rect1-5-4-8-2-7"
        width="761.6911"
@@ -47,15 +65,7 @@
        y="-677.52307"
        transform="scale(1,-1)" />
     <rect
-       style="fill:#000000;stroke-width:2.0539"
-       id="rect1-5-4-8"
-       width="908.94781"
-       height="1.1651083"
-       x="522.63141"
-       y="-563.28571"
-       transform="scale(1,-1)" />
-    <rect
-       style="fill:#1f00ec;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
        id="rect1-55"
        width="245.09531"
        height="82.329308"
@@ -65,7 +75,7 @@
        ry="0.023553507"
        transform="scale(1,-1)" />
     <rect
-       style="fill:#1f00ec;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
        id="rect1-55-5"
        width="245.09531"
        height="82.329308"
@@ -75,7 +85,7 @@
        ry="0.023553507"
        transform="scale(1,-1)" />
     <rect
-       style="fill:#1f00ec;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
        id="rect1-55-5-1"
        width="245.09531"
        height="82.329308"
@@ -85,7 +95,7 @@
        ry="0.023553507"
        transform="scale(1,-1)" />
     <rect
-       style="fill:#1f00ec;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
        id="rect1-55-5-1-6"
        width="245.09531"
        height="82.329308"
@@ -95,7 +105,7 @@
        ry="0.023553507"
        transform="scale(1,-1)" />
     <rect
-       style="fill:#1f00ec;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
        id="rect1-55-5-1-6-7"
        width="245.09531"
        height="82.329308"
@@ -105,7 +115,7 @@
        ry="0.023553507"
        transform="scale(1,-1)" />
     <rect
-       style="fill:#1f00ec;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
        id="rect1-55-5-1-6-7-1"
        width="245.09531"
        height="82.329308"
@@ -113,9 +123,19 @@
        y="-598.0885"
        rx="0.021734046"
        ry="0.023553507"
-       transform="scale(1,-1)" />
+       transform="scale(1,-1)"
+       class="interactive-element"
+       data-equipamento="Reservatório"
+       data-nome="Reservatório RAP.PPL.001"
+       data-nomenclatura="RAP.PPL.001"
+       data-status="Em operação"
+       data-volume-total="30000 m³"
+       data-eta="Brasilia"
+       data-sistema="Sistema Torto / Santa Maria"
+       data-vrps-abrangidas="VRP.TAQ.001"
+       data-area-abrangencia="Granja do torto, Varjão, Lago Norte, SPMN, SHTQ" />
     <rect
-       style="fill:#1f00ec;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
        id="rect1-55-5-1-6-7-1-1"
        width="245.09531"
        height="82.329308"
@@ -125,7 +145,7 @@
        ry="0.023553507"
        transform="scale(1,-1)" />
     <rect
-       style="fill:#1f00ec;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
        id="rect1-55-5-1-6-7-1-1-4"
        width="245.09531"
        height="82.329308"
@@ -1065,8 +1085,8 @@
        fill-rule="evenodd"
        id="path423-8" />
     <text
-       x="451.9841"
-       y="561.59229"
+       x="416.30521"
+       y="568.25232"
        class="TextStyle0"
        id="text424-8"
        style="font-size:12.4279px;font-family:Arial;stroke-width:1.55347">VARJÃO</text>
@@ -1296,17 +1316,7 @@
        id="path1"
        sodipodi:nodetypes="cc" />
     <rect
-       style="fill:#1f00ec;stroke:#ff0000;stroke-width:1.6;fill-opacity:1"
-       id="rect1"
-       width="245.09531"
-       height="82.329308"
-       x="319.85413"
-       y="-602.80194"
-       rx="0.021734046"
-       ry="0.023553507"
-       transform="scale(1,-1)" />
-    <rect
-       style="fill:#1f00ec;fill-opacity:1;stroke:#ff0000;stroke-width:1.64179"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.64179"
        id="rect2"
        width="141.19833"
        height="102.14617"
@@ -2120,7 +2130,19 @@
     </g>
     <g
        id="g9775-5-8-93-4"
-       transform="matrix(0.20513857,0,0,0.20513857,-1060.6075,-1198.7083)">
+       transform="matrix(0.20513857,0,0,0.20513857,-1060.6075,-1198.7083)"
+       class="interactive-element"
+       data-equipamento="VRP/Macro"
+       data-nome="VRP/Macro VZ1.AAT.TAQ.010"
+       data-nomenclatura="VZ1.AAT.TAQ.010"
+       data-status="Alerta"
+       data-diametro="100 mm"
+       data-ligacoes="250"
+       data-daynight="25 mca"
+       data-pressao-jusante="30 mca"
+       data-pressao-montante="50 mca"
+       data-vazao-jusante="5 l/s"
+       data-vrps-conectadas="AAT.LNT.030">
       <path
          d="m 10025.4,9146.61 c 0,-6.81 -1.4,-13.55 -4,-19.84 -2.6,-6.3 -6.4,-12.02 -11.2,-16.84 -4.8,-4.82 -10.54,-8.65 -16.85,-11.26 -6.31,-2.6 -13.07,-3.95 -19.89,-3.95 -6.83,0 -13.59,1.35 -19.9,3.95 -6.3,2.61 -12.03,6.44 -16.85,11.26 -4.82,4.82 -8.64,10.54 -11.24,16.84 -2.6,6.29 -3.93,13.03 -3.91,19.84 -0.02,6.81 1.31,13.55 3.91,19.85 2.6,6.29 6.42,12.01 11.24,16.83 4.82,4.83 10.55,8.65 16.85,11.26 6.31,2.61 13.07,3.95 19.9,3.95 6.82,0 13.58,-1.34 19.89,-3.95 6.31,-2.61 12.05,-6.43 16.85,-11.26 4.8,-4.82 8.6,-10.54 11.2,-16.83 2.6,-6.3 4,-13.04 4,-19.85 z"
          stroke="#ffff64"

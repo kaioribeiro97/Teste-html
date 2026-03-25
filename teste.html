@@ -186,7 +186,7 @@
                     statusEl.innerText = data.status;
                     
                     // Adicionado 'Em funcionamento' às opções com cor verde
-                    if(data.status === 'Operacional' || data.status === 'Normal' || data.status === 'Em funcionamento') {
+                    if(data.status === 'Operacional' || data.status === 'Normal' || data.status === 'Em funcionamento' || data.status === 'Em operação') {
                         statusEl.style.background = '#e8f5e9'; statusEl.style.color = '#2e7d32';
                     } else if (data.status === 'Atenção' || data.status === 'Alerta' || data.status === 'Alerta de Pressão') {
                         statusEl.style.background = '#fff3e0'; statusEl.style.color = '#e65100';
@@ -215,6 +215,7 @@
 
                 if (equipamento === 'Reservatório') {
                     adicionarCampo('ETA', data.eta);
+                    adicionarCampo('Sistema', data.sistema);
                     adicionarCampo('VRP Abrangidas', data.vrpAbrangidas);
                     adicionarCampo('Volume Máximo', data.volumeMaximo);
                     adicionarCampo('Área de Abrangência', data.areaAbrangencia);
@@ -223,6 +224,7 @@
                     adicionarCampo('Diâmetro', data.diametro);
                     adicionarCampo('Pressão Montante', data.pressaoMontante);
                     adicionarCampo('Pressão Jusante', data.pressaoJusante);
+                    adicionarCampo("Daynight", data.daynight);
                     adicionarCampo('Nº de Ligações', data.ligacoes);
                     adicionarCampo('VRPS Conectadas', data.vrpsConectadas);
 
@@ -230,6 +232,7 @@
                     adicionarCampo('Diâmetro', data.diametro);
                     adicionarCampo('Pressão Montante', data.pressaoMontante);
                     adicionarCampo('Pressão Jusante', data.pressaoJusante);
+                    adicionarCampo("Daynight", data.daynight);
                     adicionarCampo('Vazão Jusante', data.vazaoJusante);
                     adicionarCampo('Nº de Ligações', data.ligacoes);
                     adicionarCampo('VRPS Conectadas', data.vrpsConectadas);
