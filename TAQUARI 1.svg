@@ -135,8 +135,7 @@
        data-eta="Brasilia"
        data-sistema="Sistema Torto / Santa Maria"
        data-vrps-abrangidas="VRP.TAQ.001"
-       data-area-abrangencia="Granja do torto, Varjão, Lago Norte, SPMN, SHTQ"
-       data-imagem ="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg" />
+       data-area-abrangencia="Granja do torto, Varjão, Lago Norte, SPMN, SHTQ" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
        id="rect1-55-5-1-6-7-1-1"
@@ -1339,7 +1338,8 @@
        data-ligacoes="50"
        data-pressao-jusante="30 mca"
        data-pressao-montante="50 mca"
-       data_vrps_conectadas="VRP.TAQ.002, VRP.TAQ.003">
+       data_vrps_conectadas="VRP.TAQ.002, VRP.TAQ.003"
+       data-imagem ="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg">
       <path
          d="m 13039.8,3361.14 c 0,-6.21 -1.2,-12.37 -3.5,-18.11 -2.4,-5.74 -5.9,-10.96 -10.3,-15.36 -4.4,-4.39 -9.6,-7.88 -15.3,-10.26 -5.8,-2.38 -11.9,-3.61 -18.1,-3.61 -6.2,0 -12.4,1.23 -18.1,3.61 -5.8,2.38 -11,5.87 -15.4,10.26 -4.3,4.4 -7.8,9.62 -10.2,15.36 -2.4,5.74 -3.6,11.9 -3.6,18.11 0,6.21 1.2,12.37 3.6,18.11 2.4,5.74 5.9,10.96 10.2,15.36 4.4,4.4 9.6,7.88 15.4,10.26 5.7,2.38 11.9,3.61 18.1,3.61 6.2,0 12.3,-1.23 18.1,-3.61 5.7,-2.38 10.9,-5.86 15.3,-10.26 4.4,-4.4 7.9,-9.62 10.3,-15.36 2.3,-5.74 3.5,-11.9 3.5,-18.11 z"
          stroke="#ffff64"
