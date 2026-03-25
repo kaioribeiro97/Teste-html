@@ -46,7 +46,7 @@
         .interactive-element {
             cursor: pointer;
             transition: all 0.2s ease-in-out;
-            transform-origin: center;
+            /* A linha 'transform-origin: center;' foi removida daqui para evitar que os objetos do SVG mudem de lugar */
         }
 
         .interactive-element:hover {
@@ -74,6 +74,7 @@
             top: 0;
             bottom: 0;
             z-index: 10;
+            overflow-y: auto;
         }
 
         #info-panel.active {
@@ -134,26 +135,17 @@
         <div class="data-label">ID Técnico</div>
         <div id="item-id" class="data-value">-</div>
     </div>
-    <div class="data-row">
-        <div class="data-label">Vazão Atual</div>
-        <div id="item-vazao" class="data-value">-</div>
-    </div>
-    <div class="data-row">
-        <div class="data-label">Última Manutenção</div>
-        <div id="item-manutencao" class="data-value">-</div>
-    </div>
-    <div class="data-row">
-        <div class="data-label">Inscrições Atendidas</div>
-        <div id="item-inscricoes" class="data-value">-</div>
-    </div>
+    
+    <!-- ESPAÇO MÁGICO: O JavaScript vai criar os campos dinamicamente aqui dentro -->
+    <div id="campos-dinamicos"></div>
 </div>
 
 <script>
     const panel = document.getElementById('info-panel');
     const mapContainer = document.getElementById('map-container');
 
-    // NOME DO SEU ARQUIVO SVG EXATO
-    const svgFileName = 'SISTEMAS ISOLADOS - R01 (1).svg';
+    // NOME DO SEU ARQUIVO SVG EXATO NO GITHUB
+    const svgFileName = 'TAQUARI 1.svg';
 
     // 1. Carregar o SVG externamente
     fetch(svgFileName)
@@ -169,7 +161,7 @@
             ativarInteratividade();
         })
         .catch(error => {
-            mapContainer.innerHTML = `<p style="color:red;">Erro ao carregar o mapa: Verifique se o arquivo '${svgFileName}' está na mesma pasta e se você está usando um servidor local (Live Server).</p>`;
+            mapContainer.innerHTML = `<p style="color:red;">Erro ao carregar o mapa: Verifique se o arquivo '${svgFileName}' está na mesma pasta e se você está usando um servidor local.</p>`;
             console.error(error);
         });
 
@@ -179,35 +171,97 @@
         elements.forEach(el => {
             el.addEventListener('click', (event) => {
                 event.stopPropagation();
+                
                 const data = el.dataset;
+                const equipamento = data.equipamento;
                 
-                document.getElementById('item-nome').innerText = data.nome || 'Desconhecido';
-                document.getElementById('item-id').innerText = el.id || 'N/A';
-                document.getElementById('item-vazao').innerText = data.vazao || '-';
-                document.getElementById('item-manutencao').innerText = data.ultimaManutencao || '-';
-                document.getElementById('item-inscricoes').innerText = data.itemInscricoes || '-';
+                // Preenche o Cabeçalho Padrão com os novos atributos definidos
+                document.getElementById('item-nome').innerText = data.equipamento || 'Desconhecido';
+                document.getElementById('item-id').innerText = data.nomenclatura || 'N/A';
                 
+                // Trata o Badge de Status
                 const statusEl = document.getElementById('item-status');
-                statusEl.innerText = data.status || '-';
-                
-                if(data.status === 'Operacional' || data.status === 'Normal') {
-                    statusEl.style.background = '#e8f5e9'; statusEl.style.color = '#2e7d32';
-                } else if (data.status === 'Atenção' || data.status === 'Alerta') {
-                    statusEl.style.background = '#fff3e0'; statusEl.style.color = '#e65100';
+                if (data.status) {
+                    statusEl.style.display = 'inline-block';
+                    statusEl.innerText = data.status;
+                    
+                    // Adicionado 'Em funcionamento' às opções com cor verde
+                    if(data.status === 'Operacional' || data.status === 'Normal' || data.status === 'Em funcionamento') {
+                        statusEl.style.background = '#e8f5e9'; statusEl.style.color = '#2e7d32';
+                    } else if (data.status === 'Atenção' || data.status === 'Alerta' || data.status === 'Alerta de Pressão') {
+                        statusEl.style.background = '#fff3e0'; statusEl.style.color = '#e65100';
+                    } else {
+                        statusEl.style.background = '#e1f5fe'; statusEl.style.color = '#01579b';
+                    }
                 } else {
-                    statusEl.style.background = '#e1f5fe'; statusEl.style.color = '#01579b';
+                    statusEl.style.display = 'none'; 
                 }
 
+                // ========================================================
+                // A MÁGICA: Gera campos baseados no tipo de Equipamento
+                // ========================================================
+                const camposDinamicos = document.getElementById('campos-dinamicos');
+                let htmlCampos = '';
+
+                function adicionarCampo(label, valor) {
+                    if (valor !== undefined && valor !== '') {
+                        htmlCampos += `
+                            <div class="data-row">
+                                <div class="data-label">${label}</div>
+                                <div class="data-value">${valor}</div>
+                            </div>`;
+                    }
+                }
+
+                if (equipamento === 'Reservatório') {
+                    adicionarCampo('ETA', data.eta);
+                    adicionarCampo('VRP Abrangidas', data.vrpAbrangidas);
+                    adicionarCampo('Volume Máximo', data.volumeMaximo);
+                    adicionarCampo('Área de Abrangência', data.areaAbrangencia);
+
+                } else if (equipamento === 'VRP') {
+                    adicionarCampo('Diâmetro', data.diametro);
+                    adicionarCampo('Pressão Montante', data.pressaoMontante);
+                    adicionarCampo('Pressão Jusante', data.pressaoJusante);
+                    adicionarCampo('Nº de Ligações', data.ligacoes);
+                    adicionarCampo('VRPS Conectadas', data.vrpsConectadas);
+
+                } else if (equipamento === 'VRP/Macro') {
+                    adicionarCampo('Diâmetro', data.diametro);
+                    adicionarCampo('Pressão Montante', data.pressaoMontante);
+                    adicionarCampo('Pressão Jusante', data.pressaoJusante);
+                    adicionarCampo('Vazão Jusante', data.vazaoJusante);
+                    adicionarCampo('Nº de Ligações', data.ligacoes);
+                    adicionarCampo('VRPS Conectadas', data.vrpsConectadas);
+
+                } else if (equipamento === 'Booster') {
+                    adicionarCampo('Diâmetro', data.diametro);
+                    adicionarCampo('Nº Ligações', data.ligacoes);
+                    adicionarCampo('Pressão Jusante', data.pressaoJusante);
+
+                } else {
+                    // Fallback (caso não tenha o atributo data-equipamento)
+                    adicionarCampo('Capacidade Máxima', data.capacidade);
+                    adicionarCampo('Pressão Atual', data.pressao);
+                    adicionarCampo('Data de Instalação', data.instalacao);
+                    adicionarCampo('Vazão Atual', data.vazao);
+                    adicionarCampo('Última Manutenção', data.ultimaManutencao);
+                }
+
+                camposDinamicos.innerHTML = htmlCampos;
                 panel.classList.add('active');
             });
         });
 
-        // Fechar ao clicar no fundo do SVG
-        document.querySelector('svg').addEventListener('click', (e) => {
-            if(!e.target.closest('.interactive-element')) {
-                closePanel();
-            }
-        });
+        // Fechar ao clicar fora
+        const svgElement = document.querySelector('svg');
+        if(svgElement) {
+            svgElement.addEventListener('click', (e) => {
+                if(!e.target.closest('.interactive-element')) {
+                    closePanel();
+                }
+            });
+        }
     }
 
     function closePanel() {
