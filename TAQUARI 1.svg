@@ -130,10 +130,13 @@
        data-nomenclatura="RAP.PPL.001"
        data-status="Em operação"
        data-volume-total="30000 m³"
+       data-volume-operacao="30000 m³"
+       data-vazao-saida = "50 l/s"
        data-eta="Brasilia"
        data-sistema="Sistema Torto / Santa Maria"
        data-vrps-abrangidas="VRP.TAQ.001"
-       data-area-abrangencia="Granja do torto, Varjão, Lago Norte, SPMN, SHTQ" />
+       data-area-abrangencia="Granja do torto, Varjão, Lago Norte, SPMN, SHTQ"
+       data-imagem ="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
        id="rect1-55-5-1-6-7-1-1"
@@ -1455,7 +1458,8 @@
        data-nomenclatura="EAT.LNT.002"
        data-status="Em funcionamento"
        data-diametro="150 mm"
-       data-ligacoes="6300">
+       data-ligacoes="6300"
+       data-pressao-jusante="30 mca">
       <path
          d="m 28424.1,5434.55 c -22.7,-8.08 -44.1,-30.11 -52.6,-54.17 l -7.2,-20.2 h -54.1 -54.2 v -42.42 -42.43 h 108.3 c 108.2,0 108.2,0 125.1,10.64 34.4,21.75 49.6,62.45 36.3,97.34 -8.7,22.77 -34.2,46.83 -56.2,52.93 -20.5,5.68 -25.2,5.51 -45.4,-1.69 z"
          fill="#54d8fc"
@@ -2133,8 +2137,10 @@
        transform="matrix(0.20513857,0,0,0.20513857,-1060.6075,-1198.7083)"
        class="interactive-element"
        data-equipamento="VRP/Macro"
-       data-nome="VRP/Macro VZ1.AAT.TAQ.010"
-       data-nomenclatura="VZ1.AAT.TAQ.010"
+       data-nome="VRP/Macro VZ1.AAT.TAQ.010/VRP.TAQ.010"
+       data-nomenclatura = "VRP.TAQ.010/VZ1.AAT.TAQ.010"
+       data-nomenclatura-macro="VZ1.AAT.TAQ.010"
+       data-nomenclatura-vrp = "VRP.TAQ.010"
        data-status="Alerta"
        data-diametro="100 mm"
        data-ligacoes="250"

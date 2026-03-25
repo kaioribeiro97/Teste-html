@@ -130,9 +130,14 @@
         <h2 id="item-nome">Componente</h2>
         <span id="item-status" class="status-badge">Status</span>
     </div>
-    
+
+    <!-- Espaço reservado para a foto -->
+    <div id="image-container">
+        <img id="item-imagem" src="" alt="Foto do Equipamento">
+    </div>
+
     <div class="data-row">
-        <div class="data-label">ID Técnico</div>
+        <div class="data-label">Nomenclatura</div>
         <div id="item-id" class="data-value">-</div>
     </div>
     
@@ -179,6 +184,18 @@
                 document.getElementById('item-nome').innerText = data.equipamento || 'Desconhecido';
                 document.getElementById('item-id').innerText = data.nomenclatura || 'N/A';
                 
+                // Trata a Imagem do Equipamento
+                const imgContainer = document.getElementById('image-container');
+                const imgElement = document.getElementById('item-imagem');
+                
+                if (data.imagem) {
+                    imgElement.src = data.imagem;
+                    imgContainer.style.display = 'block'; // Mostra a imagem
+                } else {
+                    imgElement.src = '';
+                    imgContainer.style.display = 'none'; // Esconde se não tiver foto
+                }
+
                 // Trata o Badge de Status
                 const statusEl = document.getElementById('item-status');
                 if (data.status) {
@@ -217,7 +234,9 @@
                     adicionarCampo('ETA', data.eta);
                     adicionarCampo('Sistema', data.sistema);
                     adicionarCampo('VRP Abrangidas', data.vrpAbrangidas);
-                    adicionarCampo('Volume Máximo', data.volumeMaximo);
+                    adicionarCampo('Volume total (m³)', data.volumeTotal);
+                    adicionarCampo('Volume em operação (m³)', data.volumeOperacao);
+                    adicionarCampo('Vazão saída (l/s)', data.vazaoSaida);
                     adicionarCampo('Área de Abrangência', data.areaAbrangencia);
 
                 } else if (equipamento === 'VRP') {
@@ -229,6 +248,8 @@
                     adicionarCampo('VRPS Conectadas', data.vrpsConectadas);
 
                 } else if (equipamento === 'VRP/Macro') {
+                    adicionarCampo('VRP', data.nomenclaturaVrp);
+                    adicionarCampo('Macro', data.nomenclaturaMacro);
                     adicionarCampo('Diâmetro', data.diametro);
                     adicionarCampo('Pressão Montante', data.pressaoMontante);
                     adicionarCampo('Pressão Jusante', data.pressaoJusante);
