@@ -116,6 +116,22 @@
             font-weight: bold;
             margin-top: 5px;
         }
+         /* Estilização da Imagem */
+        #image-container {
+            width: 100%;
+            height: 200px;
+            background-color: #eee;
+            overflow: hidden;
+            display: none; /* Escondido por padrão */
+            border-bottom: 1px solid #ddd;
+        }
+
+        #item-imagem {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -125,16 +141,16 @@
 </div>
 
 <div id="info-panel">
+    <!-- Espaço reservado para a foto -->
+    
     <button class="close-btn" onclick="closePanel()">Fechar ✕</button>
+    
     <div class="panel-header">
         <h2 id="item-nome">Componente</h2>
         <span id="item-status" class="status-badge">Status</span>
     </div>
 
-    <!-- Espaço reservado para a foto -->
-    <div id="image-container">
-        <img id="item-imagem" src="" alt="Foto do Equipamento">
-    </div>
+    
 
     <div class="data-row">
         <div class="data-label">Nomenclatura</div>
@@ -143,6 +159,9 @@
     
     <!-- ESPAÇO MÁGICO: O JavaScript vai criar os campos dinamicamente aqui dentro -->
     <div id="campos-dinamicos"></div>
+    <div id="image-container">
+        <img id="item-imagem" src="" alt="Foto do Equipamento">
+    </div>
 </div>
 
 <script>
