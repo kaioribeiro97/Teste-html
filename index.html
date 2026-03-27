@@ -132,6 +132,28 @@
             object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
             display: block;
         }
+        /* Animação para fazer os elementos piscarem */
+        @keyframes blinker {
+        0% {
+            opacity: 1;
+            fill: #ffffff;
+        }
+        50% {
+            opacity: 0.35;
+            fill: #ff4d4d;
+        }
+        100% {
+            opacity: 1;
+            fill: #ffffff;
+        }
+    }
+
+    .highlight-blink {
+        animation: blinker 0.8s ease-in-out infinite;
+        stroke: #ff0000 !important;
+        stroke-width: 3px !important;
+        fill: #ff4d4d !important;
+    }
     </style>
 </head>
 <body>
@@ -188,12 +210,20 @@
             mapContainer.innerHTML = `<p style="color:red;">Erro ao carregar o mapa: Verifique se o arquivo '${svgFileName}' está na mesma pasta e se você está usando um servidor local.</p>`;
             console.error(error);
         });
-
+  function removerDestaques() {
+    const destacados = document.querySelectorAll('.highlight-blink');
+    destacados.forEach(el => el.classList.remove('highlight-blink'));
+}
+function closePanel() {
+    panel.classList.remove('active');
+    removerDestaques(); // Adicione esta linha
+}
     function ativarInteratividade() {
         const elements = document.querySelectorAll('.interactive-element');
-
+      
         elements.forEach(el => {
             el.addEventListener('click', (event) => {
+                removerDestaques();
                 event.stopPropagation();
                 
                 const data = el.dataset;
@@ -274,6 +304,7 @@
                     adicionarCampo('Pressão Jusante', data.pressaoJusante);
                     adicionarCampo("Daynight", data.daynight);
                     adicionarCampo('Vazão Jusante', data.vazaoJusante);
+                    adicionarCampo('DMC',data.dmc);
                     adicionarCampo('Nº de Ligações', data.ligacoes);
                     adicionarCampo('VRPS Conectadas', data.vrpsConectadas);
 
@@ -290,7 +321,52 @@
                     adicionarCampo('Vazão Atual', data.vazao);
                     adicionarCampo('Última Manutenção', data.ultimaManutencao);
                 }
+ document.querySelectorAll('.interactive-element').forEach(element => {
+    element.addEventListener('click', function () {
+        document.querySelectorAll('.highlight-blink').forEach(el => {
+            el.classList.remove('highlight-blink');
+        });
 
+        const data = this.dataset;
+        const equipamento = data.equipamento;
+
+        // Reservatório -> pisca áreas de abrangência
+        if (equipamento === 'Reservatório' && data.areaAbrangencia) {
+            const areas = data.areaAbrangencia
+                .split(',')
+                .map(s => s.trim())
+                .filter(Boolean);
+
+            areas.forEach(areaId => {
+                const areaElement = document.getElementById(areaId);
+
+                if (areaElement) {
+                    areaElement.classList.add('highlight-blink');
+                } else {
+                    console.warn(`Área não encontrada no SVG: "${areaId}"`);
+                }
+            });
+        }
+
+        // VRP -> pisca VRPs conectadas
+        if (equipamento === 'VRP' && data.vrpsConectadas) {
+            const vrps = data.vrpsConectadas
+                .split(',')
+                .map(s => s.trim())
+                .filter(Boolean);
+
+            vrps.forEach(vrpId => {
+                const vrpElement = document.getElementById(vrpId);
+
+                if (vrpElement) {
+                    vrpElement.classList.add('highlight-blink');
+                } else {
+                    console.warn(`VRP não encontrada no SVG: "${vrpId}"`);
+                }
+            });
+        }
+    });
+});
                 camposDinamicos.innerHTML = htmlCampos;
                 panel.classList.add('active');
             });
@@ -307,9 +383,7 @@
         }
     }
 
-    function closePanel() {
-        panel.classList.remove('active');
-    }
+    
 </script>
 
 </body>

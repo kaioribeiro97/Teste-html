@@ -24,8 +24,8 @@
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
      inkscape:zoom="0.74319869"
-     inkscape:cx="931.78313"
-     inkscape:cy="397.60565"
+     inkscape:cx="1416.1758"
+     inkscape:cy="339.74764"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
      inkscape:window-x="1912"
@@ -48,7 +48,7 @@
        transform="scale(1,-1)" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
-       id="rect1"
+       id="Varjão"
        width="245.095"
        height="82.329308"
        x="319.85413"
@@ -76,7 +76,7 @@
        transform="scale(1,-1)" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
-       id="rect1-55-5"
+       id="Lago Norte"
        width="245.09531"
        height="82.329308"
        x="443.64758"
@@ -86,7 +86,7 @@
        transform="scale(1,-1)" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
-       id="rect1-55-5-1"
+       id="SPMN"
        width="245.09531"
        height="82.329308"
        x="1168.6685"
@@ -96,7 +96,7 @@
        transform="scale(1,-1)" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
-       id="rect1-55-5-1-6"
+       id="SHTQ"
        width="245.09531"
        height="82.329308"
        x="1424.0303"
@@ -131,14 +131,14 @@
        data-status="Em operação"
        data-volume-total="30000 m³"
        data-volume-operacao="30000 m³"
-       data-vazao-saida = "50 l/s"
+       data-vazao-saida="50 l/s"
        data-eta="Brasilia"
        data-sistema="Sistema Torto / Santa Maria"
        data-vrps-abrangidas="VRP.TAQ.001"
        data-area-abrangencia="Granja do torto, Varjão, Lago Norte, SPMN, SHTQ" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
-       id="rect1-55-5-1-6-7-1-1"
+       id="Granja do torto"
        width="245.09531"
        height="82.329308"
        x="1019.3882"
@@ -961,6 +961,41 @@
        class="TextStyle0"
        id="text298-1"
        style="font-size:12.4279px;font-family:Arial;stroke-width:1.55347">RAP.PPL.001</text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
+       id="rect1-55-5-1-6-7-1-9"
+       width="245.09531"
+       height="82.329308"
+       x="1756.0145"
+       y="-268.90805"
+       rx="0.021734046"
+       ry="0.023553507"
+       transform="scale(1,-1)"
+       class="interactive-element"
+       data-equipamento="Reservatório"
+       data-nome="Reservatório RAP.PPL.001"
+       data-nomenclatura="RAP.PPL.001"
+       data-status="Em operação"
+       data-volume-total="30000 m³"
+       data-volume-operacao="30000 m³"
+       data-vazao-saida="50 l/s"
+       data-eta="Brasilia"
+       data-sistema="Sistema Torto / Santa Maria"
+       data-vrps-abrangidas="VRP.TAQ.001"
+       data-area-abrangencia="Granja do torto, Varjão, Lago Norte, SPMN, SHTQ" />
+    <path
+       d="m 1753.0346,270.68796 h 204.7873 v -81.36497 h -204.7873 z"
+       stroke="#000000"
+       fill="none"
+       stroke-opacity="0"
+       id="path270-1-0"
+       style="stroke-width:1.55347" />
+    <text
+       x="1841.4365"
+       y="232.46132"
+       class="TextStyle0"
+       id="text298-1-0"
+       style="font-size:12.4279px;font-family:Arial;stroke-width:1.55347">RAP.PPL.001</text>
     <path
        d="m 1265.6899,558.14511 -4.474,4.47403 4.474,4.47402 z"
        stroke="#000000"
@@ -1053,6 +1088,22 @@
        y="458.09976"
        class="TextStyle1"
        id="text384-2"
+       style="font-size:13.9813px;font-family:Arial;stroke-width:1.55347">GRANJA DO TORTO</text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:1.6"
+       id="Granja do torto-6"
+       width="245.09531"
+       height="82.329308"
+       x="1751.464"
+       y="-362.95685"
+       rx="0.021734046"
+       ry="0.023553507"
+       transform="scale(1,-1)" />
+    <text
+       x="1803.8627"
+       y="328.98816"
+       class="TextStyle1"
+       id="text384-2-0"
        style="font-size:13.9813px;font-family:Arial;stroke-width:1.55347">GRANJA DO TORTO</text>
     <text
        x="1305.6315"
@@ -1301,6 +1352,18 @@
        id="text505-9"
        style="font-size:12.4279px;font-family:Arial;stroke-width:1.55347">VRP.TAQ.001</text>
     <text
+       x="1458.0138"
+       y="879.62573"
+       class="TextStyle0"
+       id="text505-9-5"
+       style="font-size:12.4279px;font-family:Arial;stroke-width:1.55347">VRP.TAQ.002</text>
+    <text
+       x="1580.5063"
+       y="802.9389"
+       class="TextStyle0"
+       id="text505-9-5-7"
+       style="font-size:12.4279px;font-family:Arial;stroke-width:1.55347">VRP.TAQ.003</text>
+    <text
        x="879.38953"
        y="709.68835"
        class="TextStyle0"
@@ -1339,7 +1402,7 @@
        data-pressao-jusante="30 mca"
        data-pressao-montante="50 mca"
        data_vrps_conectadas="VRP.TAQ.002, VRP.TAQ.003"
-       data-imagem ="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg">
+       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg">
       <path
          d="m 13039.8,3361.14 c 0,-6.21 -1.2,-12.37 -3.5,-18.11 -2.4,-5.74 -5.9,-10.96 -10.3,-15.36 -4.4,-4.39 -9.6,-7.88 -15.3,-10.26 -5.8,-2.38 -11.9,-3.61 -18.1,-3.61 -6.2,0 -12.4,1.23 -18.1,3.61 -5.8,2.38 -11,5.87 -15.4,10.26 -4.3,4.4 -7.8,9.62 -10.2,15.36 -2.4,5.74 -3.6,11.9 -3.6,18.11 0,6.21 1.2,12.37 3.6,18.11 2.4,5.74 5.9,10.96 10.2,15.36 4.4,4.4 9.6,7.88 15.4,10.26 5.7,2.38 11.9,3.61 18.1,3.61 6.2,0 12.3,-1.23 18.1,-3.61 5.7,-2.38 10.9,-5.86 15.3,-10.26 4.4,-4.4 7.9,-9.62 10.3,-15.36 2.3,-5.74 3.5,-11.9 3.5,-18.11 z"
          stroke="#ffff64"
@@ -1364,6 +1427,45 @@
          stroke-width="7"
          stroke-linecap="round"
          id="path8154" />
+    </g>
+    <g
+       id="VRP.TAQ.002"
+       transform="matrix(0,0.17080775,-0.17080775,0,2120.5111,-1343.7886)"
+       class="interactive-element"
+       data-equipamento="VRP"
+       data-nome="VRP VRP.TAQ.002"
+       data-nomenclatura="VRP.TAQ.002"
+       data-status="Em funcionamento"
+       data-diametro="100 mm"
+       data-ligacoes="50"
+       data-pressao-jusante="30 mca"
+       data-pressao-montante="50 mca"
+       data_vrps_conectadas="VRP.TAQ.002, VRP.TAQ.003"
+       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg">
+      <path
+         d="m 13039.8,3361.14 c 0,-6.21 -1.2,-12.37 -3.5,-18.11 -2.4,-5.74 -5.9,-10.96 -10.3,-15.36 -4.4,-4.39 -9.6,-7.88 -15.3,-10.26 -5.8,-2.38 -11.9,-3.61 -18.1,-3.61 -6.2,0 -12.4,1.23 -18.1,3.61 -5.8,2.38 -11,5.87 -15.4,10.26 -4.3,4.4 -7.8,9.62 -10.2,15.36 -2.4,5.74 -3.6,11.9 -3.6,18.11 0,6.21 1.2,12.37 3.6,18.11 2.4,5.74 5.9,10.96 10.2,15.36 4.4,4.4 9.6,7.88 15.4,10.26 5.7,2.38 11.9,3.61 18.1,3.61 6.2,0 12.3,-1.23 18.1,-3.61 5.7,-2.38 10.9,-5.86 15.3,-10.26 4.4,-4.4 7.9,-9.62 10.3,-15.36 2.3,-5.74 3.5,-11.9 3.5,-18.11 z"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path5031-2" />
+      <path
+         d="m 13036.7,3361.15 -66.2,-38.26"
+         stroke="#ffffff"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path8152-4" />
+      <path
+         d="m 13036.7,3361.15 -66.2,38.25"
+         stroke="#ffffff"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path8153-5" />
+      <path
+         d="m 12970.5,3399.4 v -76.51"
+         stroke="#ffffff"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path8154-5" />
     </g>
     <g
        id="g9773-0"
@@ -2133,18 +2235,191 @@
          id="path9598-6-5-76-25" />
     </g>
     <g
+       id="VRP.TAQ.003"
+       transform="matrix(0,0.17080775,-0.17080775,0,2421.8913,-2144.2436)"
+       class="interactive-element"
+       data-equipamento="VRP"
+       data-nome="VRP VRP.TAQ.003"
+       data-nomenclatura="VRP.TAQ.003"
+       data-status="Em funcionamento"
+       data-diametro="100 mm"
+       data-ligacoes="50"
+       data-pressao-jusante="30 mca"
+       data-pressao-montante="50 mca"
+       data_vrps_conectadas="VRP.TAQ.002, VRP.TAQ.003"
+       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg">
+      <path
+         d="m 13039.8,3361.14 c 0,-6.21 -1.2,-12.37 -3.5,-18.11 -2.4,-5.74 -5.9,-10.96 -10.3,-15.36 -4.4,-4.39 -9.6,-7.88 -15.3,-10.26 -5.8,-2.38 -11.9,-3.61 -18.1,-3.61 -6.2,0 -12.4,1.23 -18.1,3.61 -5.8,2.38 -11,5.87 -15.4,10.26 -4.3,4.4 -7.8,9.62 -10.2,15.36 -2.4,5.74 -3.6,11.9 -3.6,18.11 0,6.21 1.2,12.37 3.6,18.11 2.4,5.74 5.9,10.96 10.2,15.36 4.4,4.4 9.6,7.88 15.4,10.26 5.7,2.38 11.9,3.61 18.1,3.61 6.2,0 12.3,-1.23 18.1,-3.61 5.7,-2.38 10.9,-5.86 15.3,-10.26 4.4,-4.4 7.9,-9.62 10.3,-15.36 2.3,-5.74 3.5,-11.9 3.5,-18.11 z"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path5031-2-2" />
+      <path
+         d="m 13036.7,3361.15 -66.2,-38.26"
+         stroke="#ffffff"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path8152-4-3" />
+      <path
+         d="m 13036.7,3361.15 -66.2,38.25"
+         stroke="#ffffff"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path8153-5-2" />
+      <path
+         d="m 12970.5,3399.4 v -76.51"
+         stroke="#ffffff"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path8154-5-2" />
+    </g>
+    <g
+       id="EAB_SMR_001-4"
+       class="interactive-element"
+       data-equipamento="Booster"
+       data-nome="Booster EAB.SMR.001"
+       data-nomenclatura="EAB.SMR.001"
+       data-status="Em funcionamento"
+       data-diametro="150 mm"
+       data-ligacoes="450"
+       data-pressao-jusante="30 mca"
+       transform="matrix(-0.12689045,0,0,0.12689045,5455.3198,-564.52443)">
+      <!-- ESSA LINHA NÃO PODE SUMIR -->
+      <path
+         d="m 28424.1,5434.55 c -22.7,-8.08 -44.1,-30.11 -52.6,-54.17 l -7.2,-20.2 h -54.1 -54.2 v -42.42 -42.43 h 108.3 c 108.2,0 108.2,0 125.1,10.64 34.4,21.75 49.6,62.45 36.3,97.34 -8.7,22.77 -34.2,46.83 -56.2,52.93 -20.5,5.68 -25.2,5.51 -45.4,-1.69 z"
+         fill="#54d8fc"
+         stroke="#6140fc"
+         stroke-width="10"
+         id="path142-7-3" />
+      <path
+         d="m 28535.9,5368.29 -6,22.11"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1602-2-1" />
+      <path
+         d="m 28529.9,5390.4 -11.4,19.82"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1603-2-2" />
+      <path
+         d="m 28518.5,5410.21 -16.2,16.19"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1604-8-3" />
+      <path
+         d="m 28502.3,5426.4 -19.8,11.45"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1605-2-3" />
+      <path
+         d="m 28482.5,5437.85 -22.1,5.92"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1606-8-4" />
+      <path
+         d="m 28460.4,5443.77 h -22.9"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1607-9-1" />
+      <path
+         d="m 28437.5,5443.77 -22.1,-5.92"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1608-0-1" />
+      <path
+         d="m 28415.4,5437.85 -19.9,-11.45"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1609-7-3" />
+      <path
+         d="m 28395.5,5426.4 -16.1,-16.19"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1610-8-8" />
+      <path
+         d="m 28379.4,5410.22 -11.5,-19.82"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1611-1-7" />
+      <path
+         d="m 28367.9,5390.4 -6.4,-24.11"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1612-5-4" />
+      <path
+         d="m 28361.5,5366.29 h -109.1"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1613-8-2" />
+      <path
+         d="m 28252.4,5366.28 v -94.49"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1614-6-7" />
+      <path
+         d="m 28252.4,5271.79 h 223.1"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1615-1-7" />
+      <path
+         d="m 28475.5,5271.79 26.8,15.48"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1616-2-9" />
+      <path
+         d="m 28502.3,5287.28 16.2,16.19"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1617-4-3" />
+      <path
+         d="m 28518.5,5303.46 11.4,19.82"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1618-2-1" />
+      <path
+         d="m 28529.9,5323.29 6,22.11"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1619-5-9" />
+      <path
+         d="m 28535.9,5345.4 v 22.89"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path1620-8-8" />
+    </g>
+    <g
        id="g9775-5-8-93-4"
-       transform="matrix(0.20513857,0,0,0.20513857,-1060.6075,-1198.7083)"
+       transform="matrix(0.20513857,0,0,0.20513857,-197.32847,-1721.2197)"
        class="interactive-element"
        data-equipamento="VRP/Macro"
        data-nome="VRP/Macro VZ1.AAT.TAQ.010/VRP.TAQ.010"
-       data-nomenclatura = "VRP.TAQ.010/VZ1.AAT.TAQ.010"
+       data-nomenclatura="VRP.TAQ.010/VZ1.AAT.TAQ.010"
        data-nomenclatura-macro="VZ1.AAT.TAQ.010"
-       data-nomenclatura-vrp = "VRP.TAQ.010"
+       data-nomenclatura-vrp="VRP.TAQ.010"
        data-status="Alerta"
        data-diametro="100 mm"
        data-ligacoes="250"
        data-daynight="25 mca"
+       data-dmc = "DMC.VCP.001"
        data-pressao-jusante="30 mca"
        data-pressao-montante="50 mca"
        data-vazao-jusante="5 l/s"
