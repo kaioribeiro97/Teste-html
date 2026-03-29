@@ -210,178 +210,151 @@
             mapContainer.innerHTML = `<p style="color:red;">Erro ao carregar o mapa: Verifique se o arquivo '${svgFileName}' está na mesma pasta e se você está usando um servidor local.</p>`;
             console.error(error);
         });
-  function removerDestaques() {
+ function removerDestaques() {
     const destacados = document.querySelectorAll('.highlight-blink');
     destacados.forEach(el => el.classList.remove('highlight-blink'));
+}
+
+function destacarConexoes(conexoes) {
+    if (!conexoes) return;
+
+    const idsConectados = conexoes
+        .split(',')
+        .map(id => id.trim())
+        .filter(Boolean);
+
+    idsConectados.forEach(idConectado => {
+        const elementoConectado = document.querySelector(`[data-id="${idConectado}"]`);
+
+        if (elementoConectado) {
+            elementoConectado.classList.add('highlight-blink');
+        } else {
+            console.warn(`Equipamento conectado não encontrado: "${idConectado}"`);
+        }
+    });
+}
+
+function closePanel() {
+    panel.classList.remove('active');
+    removerDestaques();
 }
 function closePanel() {
     panel.classList.remove('active');
     removerDestaques(); // Adicione esta linha
 }
     function ativarInteratividade() {
-        const elements = document.querySelectorAll('.interactive-element');
-      
-        elements.forEach(el => {
-            el.addEventListener('click', (event) => {
-                removerDestaques();
-                event.stopPropagation();
-                
-                const data = el.dataset;
-                const equipamento = data.equipamento;
-                
-                // Preenche o Cabeçalho Padrão com os novos atributos definidos
-                document.getElementById('item-nome').innerText = data.equipamento || 'Desconhecido';
-                document.getElementById('item-id').innerText = data.nomenclatura || 'N/A';
-                
-                // Trata a Imagem do Equipamento
-                const imgContainer = document.getElementById('image-container');
-                const imgElement = document.getElementById('item-imagem');
-                
-                if (data.imagem) {
-                    imgElement.src = data.imagem;
-                    imgContainer.style.display = 'block'; // Mostra a imagem
+    const elements = document.querySelectorAll('.interactive-element');
+
+    elements.forEach(el => {
+        el.addEventListener('click', (event) => {
+            removerDestaques();
+            event.stopPropagation();
+
+            const data = el.dataset;
+            const equipamento = data.equipamento;
+
+            // pisca os equipamentos conectados pelo data-conexoes
+            destacarConexoes(data.conexoes);
+
+            document.getElementById('item-nome').innerText = data.equipamento || 'Desconhecido';
+            document.getElementById('item-id').innerText = data.nomenclatura || 'N/A';
+
+            const imgContainer = document.getElementById('image-container');
+            const imgElement = document.getElementById('item-imagem');
+
+            if (data.imagem) {
+                imgElement.src = data.imagem;
+                imgContainer.style.display = 'block';
+            } else {
+                imgElement.src = '';
+                imgContainer.style.display = 'none';
+            }
+
+            const statusEl = document.getElementById('item-status');
+            if (data.status) {
+                statusEl.style.display = 'inline-block';
+                statusEl.innerText = data.status;
+
+                if (
+                    data.status === 'Operacional' ||
+                    data.status === 'Normal' ||
+                    data.status === 'Em funcionamento' ||
+                    data.status === 'Em operação'
+                ) {
+                    statusEl.style.background = '#e8f5e9';
+                    statusEl.style.color = '#2e7d32';
+                } else if (
+                    data.status === 'Atenção' ||
+                    data.status === 'Alerta' ||
+                    data.status === 'Alerta de Pressão'
+                ) {
+                    statusEl.style.background = '#fff3e0';
+                    statusEl.style.color = '#e65100';
                 } else {
-                    imgElement.src = '';
-                    imgContainer.style.display = 'none'; // Esconde se não tiver foto
+                    statusEl.style.background = '#e1f5fe';
+                    statusEl.style.color = '#01579b';
                 }
+            } else {
+                statusEl.style.display = 'none';
+            }
 
-                // Trata o Badge de Status
-                const statusEl = document.getElementById('item-status');
-                if (data.status) {
-                    statusEl.style.display = 'inline-block';
-                    statusEl.innerText = data.status;
-                    
-                    // Adicionado 'Em funcionamento' às opções com cor verde
-                    if(data.status === 'Operacional' || data.status === 'Normal' || data.status === 'Em funcionamento' || data.status === 'Em operação') {
-                        statusEl.style.background = '#e8f5e9'; statusEl.style.color = '#2e7d32';
-                    } else if (data.status === 'Atenção' || data.status === 'Alerta' || data.status === 'Alerta de Pressão') {
-                        statusEl.style.background = '#fff3e0'; statusEl.style.color = '#e65100';
-                    } else {
-                        statusEl.style.background = '#e1f5fe'; statusEl.style.color = '#01579b';
-                    }
-                } else {
-                    statusEl.style.display = 'none'; 
+            const camposDinamicos = document.getElementById('campos-dinamicos');
+            let htmlCampos = '';
+
+            function adicionarCampo(label, valor) {
+                if (valor !== undefined && valor !== '') {
+                    htmlCampos += `
+                        <div class="data-row">
+                            <div class="data-label">${label}</div>
+                            <div class="data-value">${valor}</div>
+                        </div>`;
                 }
+            }
 
-                // ========================================================
-                // A MÁGICA: Gera campos baseados no tipo de Equipamento
-                // ========================================================
-                const camposDinamicos = document.getElementById('campos-dinamicos');
-                let htmlCampos = '';
+            if (equipamento === 'Reservatório') {
+                adicionarCampo('ETA', data.eta);
+                adicionarCampo('Sistema', data.sistema);
+                adicionarCampo('Volume total (m³)', data.volumeTotal);
+                adicionarCampo('Volume em operação (m³)', data.volumeOperacao);
+                adicionarCampo('Vazão saída (l/s)', data.vazaoSaida);
+                adicionarCampo('Área de Abrangência', data.areaAbrangencia);
 
-                function adicionarCampo(label, valor) {
-                    if (valor !== undefined && valor !== '') {
-                        htmlCampos += `
-                            <div class="data-row">
-                                <div class="data-label">${label}</div>
-                                <div class="data-value">${valor}</div>
-                            </div>`;
-                    }
-                }
+            } else if (equipamento === 'VRP') {
+                adicionarCampo('Diâmetro', data.diametro);
+                adicionarCampo('Pressão Montante', data.pressaoMontante);
+                adicionarCampo('Pressão Jusante', data.pressaoJusante);
+                adicionarCampo('Daynight', data.daynight);
+                adicionarCampo('Nº de Ligações', data.ligacoes);
+                adicionarCampo('Conexões', data.conexoes);
 
-                if (equipamento === 'Reservatório') {
-                    adicionarCampo('ETA', data.eta);
-                    adicionarCampo('Sistema', data.sistema);
-                    adicionarCampo('VRP Abrangidas', data.vrpAbrangidas);
-                    adicionarCampo('Volume total (m³)', data.volumeTotal);
-                    adicionarCampo('Volume em operação (m³)', data.volumeOperacao);
-                    adicionarCampo('Vazão saída (l/s)', data.vazaoSaida);
-                    adicionarCampo('Área de Abrangência', data.areaAbrangencia);
+            } else if (equipamento === 'VRP/Macro') {
+                adicionarCampo('VRP', data.nomenclaturaVrp);
+                adicionarCampo('Macro', data.nomenclaturaMacro);
+                adicionarCampo('Diâmetro', data.diametro);
+                adicionarCampo('Pressão Montante', data.pressaoMontante);
+                adicionarCampo('Pressão Jusante', data.pressaoJusante);
+                adicionarCampo('Daynight', data.daynight);
+                adicionarCampo('Vazão Jusante', data.vazaoJusante);
+                adicionarCampo('DMC', data.dmc);
+                adicionarCampo('Nº de Ligações', data.ligacoes);
+                adicionarCampo('Conexões', data.conexoes);
+            }
 
-                } else if (equipamento === 'VRP') {
-                    adicionarCampo('Diâmetro', data.diametro);
-                    adicionarCampo('Pressão Montante', data.pressaoMontante);
-                    adicionarCampo('Pressão Jusante', data.pressaoJusante);
-                    adicionarCampo("Daynight", data.daynight);
-                    adicionarCampo('Nº de Ligações', data.ligacoes);
-                    adicionarCampo('VRPS Conectadas', data.vrpsConectadas);
-
-                } else if (equipamento === 'VRP/Macro') {
-                    adicionarCampo('VRP', data.nomenclaturaVrp);
-                    adicionarCampo('Macro', data.nomenclaturaMacro);
-                    adicionarCampo('Diâmetro', data.diametro);
-                    adicionarCampo('Pressão Montante', data.pressaoMontante);
-                    adicionarCampo('Pressão Jusante', data.pressaoJusante);
-                    adicionarCampo("Daynight", data.daynight);
-                    adicionarCampo('Vazão Jusante', data.vazaoJusante);
-                    adicionarCampo('DMC',data.dmc);
-                    adicionarCampo('Nº de Ligações', data.ligacoes);
-                    adicionarCampo('VRPS Conectadas', data.vrpsConectadas);
-
-                } else if (equipamento === 'Booster') {
-                    adicionarCampo('Diâmetro', data.diametro);
-                    adicionarCampo('Nº Ligações', data.ligacoes);
-                    adicionarCampo('Pressão Jusante', data.pressaoJusante);
-
-                } else {
-                    // Fallback (caso não tenha o atributo data-equipamento)
-                    adicionarCampo('Capacidade Máxima', data.capacidade);
-                    adicionarCampo('Pressão Atual', data.pressao);
-                    adicionarCampo('Data de Instalação', data.instalacao);
-                    adicionarCampo('Vazão Atual', data.vazao);
-                    adicionarCampo('Última Manutenção', data.ultimaManutencao);
-                }
- document.querySelectorAll('.interactive-element').forEach(element => {
-    element.addEventListener('click', function () {
-        document.querySelectorAll('.highlight-blink').forEach(el => {
-            el.classList.remove('highlight-blink');
+            camposDinamicos.innerHTML = htmlCampos;
+            panel.classList.add('active');
         });
-
-        const data = this.dataset;
-        const equipamento = data.equipamento;
-
-        // Reservatório -> pisca áreas de abrangência
-        if (equipamento === 'Reservatório' && data.areaAbrangencia) {
-            const areas = data.areaAbrangencia
-                .split(',')
-                .map(s => s.trim())
-                .filter(Boolean);
-
-            areas.forEach(areaId => {
-                const areaElement = document.getElementById(areaId);
-
-                if (areaElement) {
-                    areaElement.classList.add('highlight-blink');
-                } else {
-                    console.warn(`Área não encontrada no SVG: "${areaId}"`);
-                }
-            });
-        }
-
-        // VRP -> pisca VRPs conectadas
-        if (equipamento === 'VRP' && data.vrpsConectadas) {
-            const vrps = data.vrpsConectadas
-                .split(',')
-                .map(s => s.trim())
-                .filter(Boolean);
-
-            vrps.forEach(vrpId => {
-                const vrpElement = document.getElementById(vrpId);
-
-                if (vrpElement) {
-                    vrpElement.classList.add('highlight-blink');
-                } else {
-                    console.warn(`VRP não encontrada no SVG: "${vrpId}"`);
-                }
-            });
-        }
     });
-});
-                camposDinamicos.innerHTML = htmlCampos;
-                panel.classList.add('active');
-            });
-        });
 
-        // Fechar ao clicar fora
-        const svgElement = document.querySelector('svg');
-        if(svgElement) {
-            svgElement.addEventListener('click', (e) => {
-                if(!e.target.closest('.interactive-element')) {
-                    closePanel();
-                }
-            });
-        }
+    const svgElement = document.querySelector('svg');
+    if (svgElement) {
+        svgElement.addEventListener('click', (e) => {
+            if (!e.target.closest('.interactive-element')) {
+                closePanel();
+            }
+        });
     }
+}
+
 
     
 </script>
