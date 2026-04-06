@@ -9,6 +9,9 @@
    id="svg1"
    inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
    sodipodi:docname="VCP2 1.svg"
+   inkscape:export-filename="VCP2 1.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -24,9 +27,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
-     inkscape:zoom="1.076"
-     inkscape:cx="912.63941"
-     inkscape:cy="302.50929"
+     inkscape:zoom="0.7608469"
+     inkscape:cx="1800.6251"
+     inkscape:cy="1885.399"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
      inkscape:window-x="-8"
@@ -212,9 +215,9 @@
        transform="translate(1098.7999,1166.6691)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan19"><tspan
+         id="tspan68"><tspan
            style="fill:#000000"
-           id="tspan13">191878</tspan></tspan></text>
+           id="tspan61">191878</tspan></tspan></text>
     <g
        transform="matrix(0,-0.17080775,0.17080775,0,1512.5295,4580.4289)"
        class="interactive-element"
@@ -303,9 +306,9 @@
        transform="translate(1098.7999,1086.6691)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan22"><tspan
+         id="tspan76"><tspan
            style="fill:#000000"
-           id="tspan21">216878</tspan></tspan></text>
+           id="tspan70">216878</tspan></tspan></text>
     <g
        transform="matrix(0,-0.17080775,0.17080775,0,1512.5295,4500.4289)"
        class="interactive-element"
@@ -407,9 +410,9 @@
        transform="translate(1234.2617,1532.4081)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan26"><tspan
+         id="tspan90"><tspan
            style="fill:#000000"
-           id="tspan25">VRP.VCP.045</tspan></tspan></text>
+           id="tspan89">VRP.VCP.045</tspan></tspan></text>
     <g
        transform="matrix(0,0.17080775,-0.17080775,0,2769.4267,474.45055)"
        class="interactive-element"
@@ -2242,9 +2245,9 @@
        transform="translate(0,200)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan30"><tspan
+         id="tspan109"><tspan
            style="fill:#000000"
-           id="tspan29">VRP.VCP.021</tspan></tspan></text>
+           id="tspan93">VRP.VCP.021</tspan></tspan></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#00106a;stroke-width:2.09247;stroke-dasharray:none;stroke-opacity:1"
        width="147.11943"
@@ -2318,9 +2321,9 @@
        transform="translate(202.98433,285.16825)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan33"><tspan
+         id="tspan140"><tspan
            style="fill:#000000"
-           id="tspan31">VRP.VCP.046</tspan></tspan></text>
+           id="tspan127">VRP.VCP.046</tspan></tspan></text>
     <rect
        style="fill:#058f16;fill-opacity:1;stroke-width:2.01121;stroke-dasharray:none"
        id="rect126"
@@ -2460,9 +2463,9 @@
        transform="translate(1111.2183,-290.51712)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan35"><tspan
+         id="tspan196"><tspan
            style="fill:#000000"
-           id="tspan34">VRP.VCP.041</tspan></tspan></text>
+           id="tspan181">VRP.VCP.041</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:8px;writing-mode:lr-tb;direction:ltr;fill:#2d20ff;fill-opacity:1;stroke:none;stroke-width:3;stroke-dasharray:none;stroke-opacity:1"
@@ -3984,7 +3987,7 @@
        class="interactive-element"
        data-equipamento="VRP"
        data-nome="VRP VRP.TAQ.003"
-       data-nomenclatura="VRP.VRP.014"
+       data-nomenclatura="VRP.VCP.014"
        data-status="Em Operação"
        data-diametro="75 mm"
        data-ligacoes="292"
@@ -4143,9 +4146,9 @@
        transform="translate(1211.3639,125.03923)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan37"><tspan
+         id="tspan198"><tspan
            style="fill:#000000"
-           id="tspan36">VRP.VCP.030</tspan></tspan></text>
+           id="tspan197">VRP.VCP.030</tspan></tspan></text>
     <g
        transform="matrix(0,0.17080775,-0.17080775,0,2784.9382,-935.50335)"
        class="interactive-element"
@@ -4332,9 +4335,9 @@
        transform="translate(-2.8284271,872.61436)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan39"><tspan
+         id="tspan200"><tspan
            style="fill:#000000"
-           id="tspan38">VRP.VCP.027</tspan></tspan></text>
+           id="tspan199">VRP.VCP.027</tspan></tspan></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#00106a;stroke-width:2.09247;stroke-dasharray:none;stroke-opacity:1"
        width="147.11943"
@@ -4413,9 +4416,9 @@
        transform="translate(200.1559,957.78261)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan41"><tspan
+         id="tspan205"><tspan
            style="fill:#000000"
-           id="tspan40">VRP.VCP.022</tspan></tspan></text>
+           id="tspan202">VRP.VCP.022</tspan></tspan></text>
     <rect
        style="fill:#000000;stroke-width:0.649706"
        id="rect223"
@@ -5055,9 +5058,9 @@
        transform="translate(-5.0784271,654.86436)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan45"><tspan
+         id="tspan209"><tspan
            style="fill:#000000"
-           id="tspan42">VRP.VCP.023</tspan></tspan></text>
+           id="tspan207">VRP.VCP.023</tspan></tspan></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#00106a;stroke-width:2.09247;stroke-dasharray:none;stroke-opacity:1"
        width="147.11943"
@@ -5199,9 +5202,9 @@
        transform="translate(-2.8284271,1152.6144)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan47"><tspan
+         id="tspan214"><tspan
            style="fill:#000000"
-           id="tspan46">VRP.VCP.037</tspan></tspan></text>
+           id="tspan211">VRP.VCP.037</tspan></tspan></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#00106a;stroke-width:2.09247;stroke-dasharray:none;stroke-opacity:1"
        width="147.11943"
@@ -5270,9 +5273,9 @@
        transform="translate(213.1559,1238.2826)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan51"><tspan
+         id="tspan221"><tspan
            style="fill:#000000"
-           id="tspan48">114651</tspan></tspan></text>
+           id="tspan220">114651</tspan></tspan></text>
     <rect
        style="fill:#000000;stroke-width:0.651379"
        id="rect248"
@@ -5550,9 +5553,9 @@
        transform="translate(757.78285,1179.141)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan53"><tspan
+         id="tspan228"><tspan
            style="fill:#000000"
-           id="tspan52">VRP.VCP.042</tspan></tspan></text>
+           id="tspan222">VRP.VCP.042</tspan></tspan></text>
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:#00106a;stroke-width:2.09247;stroke-dasharray:none;stroke-opacity:1"
        width="147.11943"
@@ -5626,9 +5629,9 @@
        transform="translate(858.19348,993.35619)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan55"><tspan
+         id="tspan234"><tspan
            style="fill:#000000"
-           id="tspan54">VRP.VCP.048</tspan></tspan></text>
+           id="tspan230">VRP.VCP.048</tspan></tspan></text>
     <rect
        style="fill:#000000;stroke-width:0.903365"
        id="rect276"
@@ -5786,9 +5789,9 @@
        transform="translate(658.01804,1383.2047)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan57"><tspan
+         id="tspan238"><tspan
            style="fill:#000000"
-           id="tspan56">189276</tspan></tspan></text>
+           id="tspan237">189276</tspan></tspan></text>
     <g
        transform="matrix(0,0.17080775,-0.17080775,0,2218.2977,325.03297)"
        class="interactive-element"
@@ -6074,9 +6077,9 @@
        transform="translate(962.02731,1634.0904)"><tspan
          x="962.79529"
          y="1180.4729"
-         id="tspan59"><tspan
+         id="tspan243"><tspan
            style="fill:#000000"
-           id="tspan58">VRP.VCP.007</tspan></tspan></text>
+           id="tspan242">VRP.VCP.007</tspan></tspan></text>
     <rect
        style="fill:#058f16;fill-opacity:1;stroke-width:1.21394"
        id="rect322"

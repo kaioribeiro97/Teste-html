@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistemas Isolados - Interativo</title>
+    <!-- Inclusão da biblioteca Chart.js para os gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary-color: #0056b3;
@@ -88,17 +90,12 @@
             filter: drop-shadow(2px 4px 6px rgba(0, 86, 179, 0.6)) brightness(0.85);
         }
 
-        .interactive-element text {
-            user-select: none;
-            pointer-events: none;
-        }
-
         #info-panel {
-            width: 320px;
-            max-width: min(320px, 90vw);
+            width: 350px;
+            max-width: min(350px, 95vw);
             background: var(--card-bg);
             border-left: 2px solid #ddd;
-            padding: 25px;
+            padding: 20px;
             box-shadow: -5px 0 15px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
@@ -118,7 +115,7 @@
 
         .panel-header {
             border-bottom: 2px solid var(--primary-color);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             padding-bottom: 10px;
         }
 
@@ -129,19 +126,19 @@
         }
 
         .data-row {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .data-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #666;
             font-weight: bold;
         }
 
         .data-value {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-color);
-            margin-top: 3px;
+            margin-top: 2px;
             word-break: break-word;
         }
 
@@ -152,11 +149,7 @@
             padding: 5px 10px;
             border-radius: 4px;
             cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .close-btn:hover {
-            background: #ddd;
+            margin-bottom: 15px;
         }
 
         .status-badge {
@@ -168,43 +161,44 @@
             margin-top: 5px;
         }
 
+        /* Estilo para o container do gráfico */
+        #chart-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            display: none;
+        }
+
+        #chart-section h3 {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
         #image-container {
             width: 100%;
-            height: 200px;
+            height: 180px;
             background-color: #eee;
             overflow: hidden;
             display: none;
-            border-bottom: 1px solid #ddd;
-            margin-top: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
         }
 
         #item-imagem {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
 
         @keyframes blinker {
-            0% {
-                opacity: 1;
-                fill: #ffffff;
-            }
-            50% {
-                opacity: 0.35;
-                fill: #ff4d4d;
-            }
-            100% {
-                opacity: 1;
-                fill: #ffffff;
-            }
+            50% { opacity: 0.4; fill: #ff4d4d; }
         }
 
         .highlight-blink {
             animation: blinker 0.8s ease-in-out infinite;
             stroke: #ff0000 !important;
             stroke-width: 3px !important;
-            fill: #ff4d4d !important;
         }
 
         .error-box {
@@ -214,15 +208,6 @@
             padding: 16px;
             margin: 20px;
             border-radius: 8px;
-            max-width: 700px;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .error-box code {
-            background: #fff2f2;
-            padding: 2px 5px;
-            border-radius: 4px;
         }
     </style>
 </head>
@@ -231,7 +216,7 @@
 <div id="map-container">
     <div id="svg-viewport">
         <div id="svg-wrapper">
-            <p id="loading-text">A carregar o mapa...</p>
+            <p id="loading-text">A carregar o mapa e dados...</p>
         </div>
     </div>
 </div>
@@ -251,6 +236,12 @@
 
     <div id="campos-dinamicos"></div>
 
+    <!-- Seção do Gráfico -->
+    <div id="chart-section">
+        <h3>Histórico de Pressões (Semana)</h3>
+        <canvas id="pressureChart"></canvas>
+    </div>
+
     <div id="image-container">
         <img id="item-imagem" src="" alt="Foto do Equipamento">
     </div>
@@ -258,11 +249,12 @@
 
 <script>
     const panel = document.getElementById('info-panel');
-    const mapContainer = document.getElementById('map-container');
     const svgWrapper = document.getElementById('svg-wrapper');
     const svgViewport = document.getElementById('svg-viewport');
-
+    const chartSection = document.getElementById('chart-section');
+    
     const svgFileName = 'VCP2 1.svg';
+    const csvFileName = 'media_pressoes_ultima_semana.csv';
 
     let scale = 1;
     let minScale = 0.1;
@@ -272,105 +264,157 @@
     let startY = 0;
     let lastTranslateXPx = 0;
     let lastTranslateYPx = 0;
+    
+    let currentChart = null;
 
-    function mostrarErro(msg) {
-        svgWrapper.innerHTML = `
-            <div class="error-box">
-                <strong>Erro ao carregar SVG</strong><br><br>
-                ${msg}
-            </div>
-        `;
+    // --- FUNÇÕES DE DADOS (CSV e GRÁFICO) ---
+
+    async function atualizarGrafico(nomenclatura) {
+        if (!nomenclatura) return;
+
+        try {
+            const response = await fetch(csvFileName);
+            if (!response.ok) throw new Error("Erro ao carregar CSV");
+            
+            const text = await response.text();
+            const lines = text.split('\n');
+            
+            const labels = [];
+            const dataMontante = [];
+            const dataJusante = [];
+
+            // Pular cabeçalho e iterar
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+                
+                const cols = line.split(';'); // Delimitador ;
+                if (cols.length < 5) continue;
+
+                const tagCsv = cols[0].trim();
+                const vrpCsv = cols[1].trim();
+                const caracteristica = cols[2].trim();
+                const tempo = cols[3].trim();
+                const valor = parseFloat(cols[4].replace(',', '.'));
+
+                // Filtramos se o identificador enviado (nomenclatura ou nomenclaturaVrp) bate com o VRP ou TAG do CSV
+                if (vrpCsv === nomenclatura || tagCsv === nomenclatura) {
+                    const dataObj = new Date(tempo);
+                    
+                    // Formatação dd/mm hh:mm
+                    const dia = String(dataObj.getDate()).padStart(2, '0');
+                    const mes = String(dataObj.getMonth() + 1).padStart(2, '0');
+                    const horas = String(dataObj.getHours()).padStart(2, '0');
+                    const minutos = String(dataObj.getMinutes()).padStart(2, '0');
+                    
+                    const labelFormatado = `${dia}/${mes} ${horas}:${minutos}`;
+                    
+                    if (!labels.includes(labelFormatado)) {
+                        labels.push(labelFormatado);
+                    }
+
+                    if (caracteristica === 'Montante') {
+                        dataMontante.push(valor);
+                    } else if (caracteristica === 'Jusante') {
+                        dataJusante.push(valor);
+                    }
+                }
+            }
+
+            if (labels.length > 0) {
+                renderizarCanvas(labels, dataMontante, dataJusante);
+                chartSection.style.display = 'block';
+            } else {
+                chartSection.style.display = 'none';
+            }
+
+        } catch (error) {
+            console.error("Erro no gráfico:", error);
+            chartSection.style.display = 'none';
+        }
     }
 
-    function carregarSVG() {
-        console.log('Tentando carregar SVG:', svgFileName);
-        console.log('URL atual:', window.location.href);
+    function renderizarCanvas(labels, montante, jusante) {
+        const ctx = document.getElementById('pressureChart').getContext('2d');
+        
+        if (currentChart) {
+            currentChart.destroy();
+        }
 
+        currentChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Montante',
+                        data: montante,
+                        borderColor: '#0056b3',
+                        backgroundColor: 'rgba(0, 86, 179, 0.1)',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'Jusante',
+                        data: jusante,
+                        borderColor: '#ff4d4d',
+                        backgroundColor: 'rgba(255, 77, 77, 0.1)',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        tension: 0.3,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'mca' }
+                    },
+                    x: {
+                        ticks: {
+                            maxTicksLimit: 6,
+                            font: { size: 10 }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { boxWidth: 12, font: { size: 11 } }
+                    }
+                }
+            }
+        });
+    }
+
+    // --- LÓGICA DO MAPA E INTERAÇÃO ---
+
+    function carregarSVG() {
         fetch(svgFileName)
             .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Arquivo não encontrado (${response.status})`);
-                }
+                if (!response.ok) throw new Error(`Arquivo não encontrado`);
                 return response.text();
             })
             .then(svgData => {
-                if (!svgData || !svgData.includes('<svg')) {
-                    throw new Error('O arquivo carregado não é um SVG válido.');
-                }
-
                 svgWrapper.innerHTML = svgData;
-
                 ajustarTamanhoInicial();
                 updateTransform();
                 ativarInteratividade();
             })
             .catch(error => {
-                console.error('Erro ao carregar o SVG:', error);
-
-                mostrarErro(`
-                    ${error.message}<br><br>
-                    Verifique os pontos abaixo:
-                    <ul>
-                        <li>O arquivo <code>${svgFileName}</code> está na mesma pasta do HTML</li>
-                        <li>O nome do arquivo está exatamente igual, incluindo espaço e extensão</li>
-                        <li>Você está abrindo por servidor local, e não por <code>file:///</code></li>
-                    </ul>
-                    Exemplo correto: <code>http://localhost:8000</code>
-                `);
+                console.error(error);
+                svgWrapper.innerHTML = `<div class="error-box">Erro ao carregar mapa: ${svgFileName}</div>`;
             });
-    }
-
-    function ajustarTamanhoInicial() {
-        const svgElement = svgWrapper.querySelector('svg');
-        if (!svgElement) return;
-
-        const viewBox = svgElement.viewBox && svgElement.viewBox.baseVal;
-        const svgWidth = viewBox && viewBox.width ? viewBox.width : (svgElement.width?.baseVal?.value || 3100);
-        const svgHeight = viewBox && viewBox.height ? viewBox.height : (svgElement.height?.baseVal?.value || 3000);
-
-        const viewportRect = svgViewport.getBoundingClientRect();
-        if (!viewportRect.width || !viewportRect.height) return;
-
-        const scaleX = viewportRect.width / svgWidth;
-        const scaleY = viewportRect.height / svgHeight;
-
-        scale = Math.min(scaleX, scaleY, 1);
-        minScale = Math.max(scale * 0.5, 0.05);
-        maxScale = Math.max(scale * 12, 5);
-
-        lastTranslateXPx = 0;
-        lastTranslateYPx = 0;
-    }
-
-    function removerDestaques() {
-        const destacados = document.querySelectorAll('.highlight-blink');
-        destacados.forEach(el => el.classList.remove('highlight-blink'));
-    }
-
-    function destacarConexoes(conexoes) {
-        if (!conexoes) return;
-
-        const idsConectados = conexoes
-            .split(',')
-            .map(id => id.trim())
-            .filter(Boolean);
-
-        idsConectados.forEach(idConectado => {
-            const elementoConectado =
-                document.querySelector(`[data-id="${idConectado}"]`) ||
-                document.querySelector(`[data-nomenclatura="${idConectado}"]`);
-
-            if (elementoConectado) {
-                elementoConectado.classList.add('highlight-blink');
-            } else {
-                console.warn(`Equipamento conectado não encontrado: "${idConectado}"`);
-            }
-        });
-    }
-
-    function closePanel() {
-        panel.classList.remove('active');
-        removerDestaques();
     }
 
     function ativarInteratividade() {
@@ -383,105 +427,62 @@
 
                 const data = el.dataset;
                 const equipamento = data.equipamento;
+                
+                // Prioridades de identificação
+                const nomenclatura = data.nomenclatura || data.id;
+                const nomenclaturaVrp = data.nomenclaturaVrp; // Pega o atributo data-nomenclatura-vrp
 
                 destacarConexoesEmCadeia(el);
 
-                document.getElementById('item-nome').innerText =
-                    data.nome || data.equipamento || 'Desconhecido';
+                // Preencher painel principal
+                document.getElementById('item-nome').innerText = data.nome || equipamento || 'Desconhecido';
+                document.getElementById('item-id').innerText = nomenclatura || 'N/A';
 
-                document.getElementById('item-id').innerText =
-                    data.nomenclatura || 'N/A';
-
+                // Foto
                 const imgContainer = document.getElementById('image-container');
                 const imgElement = document.getElementById('item-imagem');
-
                 if (data.imagem) {
                     imgElement.src = data.imagem;
                     imgContainer.style.display = 'block';
                 } else {
-                    imgElement.src = '';
                     imgContainer.style.display = 'none';
                 }
 
+                // Status
                 const statusEl = document.getElementById('item-status');
                 if (data.status) {
                     statusEl.style.display = 'inline-block';
                     statusEl.innerText = data.status;
-
-                    if (
-                        data.status === 'Operacional' ||
-                        data.status === 'Normal' ||
-                        data.status === 'Em funcionamento' ||
-                        data.status === 'Em operação'
-                    ) {
-                        statusEl.style.background = '#e8f5e9';
-                        statusEl.style.color = '#2e7d32';
-                    } else if (
-                        data.status === 'Atenção' ||
-                        data.status === 'Alerta' ||
-                        data.status === 'Alerta de Pressão'
-                    ) {
-                        statusEl.style.background = '#fff3e0';
-                        statusEl.style.color = '#e65100';
-                    } else {
-                        statusEl.style.background = '#e1f5fe';
-                        statusEl.style.color = '#01579b';
-                    }
+                    statusEl.style.background = (data.status.includes('Oper') || data.status.includes('Normal')) ? '#e8f5e9' : '#fff3e0';
+                    statusEl.style.color = (data.status.includes('Oper') || data.status.includes('Normal')) ? '#2e7d32' : '#e65100';
                 } else {
                     statusEl.style.display = 'none';
                 }
 
+                // Campos Dinâmicos
                 const camposDinamicos = document.getElementById('campos-dinamicos');
                 let htmlCampos = '';
+                const add = (l, v) => v ? htmlCampos += `<div class="data-row"><div class="data-label">${l}</div><div class="data-value">${v}</div></div>` : null;
 
-                function adicionarCampo(label, valor) {
-                    if (valor !== undefined && valor !== '') {
-                        htmlCampos += `
-                            <div class="data-row">
-                                <div class="data-label">${label}</div>
-                                <div class="data-value">${valor}</div>
-                            </div>`;
+                if (equipamento?.includes('VRP')) {
+                    add('Diâmetro', data.diametro);
+                    add('Pressão Montante', data.pressaoMontante);
+                    add('Pressão Jusante', data.pressaoJusante);
+                    add('Nº de Ligações', data.ligacoes);
+                    
+                    // Lógica do Gráfico: Prioriza nomenclaturaVrp se disponível, senão usa nomenclatura comum
+                    const idParaGrafico = nomenclaturaVrp || nomenclatura;
+                    atualizarGrafico(idParaGrafico);
+                    
+                } else {
+                    chartSection.style.display = 'none';
+                    if (equipamento === 'Reservatório') {
+                        add('Sistema', data.sistema);
+                        add('Volume Total', data.volumeTotal);
+                        add('Volume Operação', data.volumeOperacao);
+                    } else if (equipamento === 'Booster') {
+                        add('Pressão Jusante', data.pressaoJusante);
                     }
-                }
-
-                if (equipamento === 'Reservatório') {
-                    adicionarCampo('ETA', data.eta);
-                    adicionarCampo('Sistema', data.sistema);
-                    adicionarCampo('Volume total (m³)', data.volumeTotal);
-                    adicionarCampo('Volume em operação (m³)', data.volumeOperacao);
-                    adicionarCampo('Vazão saída (l/s)', data.vazaoSaida);
-                    adicionarCampo('Área de Abrangência', data.areaAbrangencia);
-
-                } else if (equipamento === 'VRP') {
-                    adicionarCampo('Diâmetro', data.diametro);
-                    adicionarCampo('Pressão Montante', data.pressaoMontante);
-                    adicionarCampo('Pressão Jusante', data.pressaoJusante);
-                    adicionarCampo('Daynight', data.daynight);
-                    adicionarCampo('Nº de Ligações', data.ligacoes);
-                    adicionarCampo('VRPs Conectadas', data.vrpsConectadas || data.vrps_conectadas);
-
-                } else if (equipamento === 'VRP/Macro') {
-                    adicionarCampo('VRP', data.nomenclaturaVrp);
-                    adicionarCampo('Macro', data.nomenclaturaMacro);
-                    adicionarCampo('Diâmetro', data.diametro);
-                    adicionarCampo('Pressão Montante', data.pressaoMontante);
-                    adicionarCampo('Pressão Jusante', data.pressaoJusante);
-                    adicionarCampo('Daynight', data.daynight);
-                    adicionarCampo('Vazão Jusante', data.vazaoJusante);
-                    adicionarCampo('DMC', data.dmc);
-                    adicionarCampo('Nº de Ligações', data.ligacoes);
-                    adicionarCampo('VRPs Conectadas', data.vrpsConectadas || data.vrps_conectadas);
-
-                } else if (equipamento === 'Booster') {
-                    adicionarCampo('Diâmetro', data.diametro);
-                    adicionarCampo('Pressão Jusante', data.pressaoJusante);
-                    adicionarCampo('Nº de Ligações', data.ligacoes);
-                    adicionarCampo('Conexões', data.vrpsConectadas || data.vrps_conectadas);
-                }else if (equipamento === 'Macro') {
-                    adicionarCampo('Diâmetro', data.diametro);
-                    adicionarCampo('Vazão saída (l/s)', data.vazaoJusante);
-                    adicionarCampo('DMC', data.dmc);
-                    adicionarCampo('Conexões', data.vrpsConectadas || data.vrps_conectadas);
                 }
 
                 camposDinamicos.innerHTML = htmlCampos;
@@ -489,164 +490,81 @@
             });
         });
 
-        const svgElement = document.querySelector('#svg-wrapper svg');
-        if (svgElement) {
-            svgElement.addEventListener('click', (e) => {
-                if (!e.target.closest('.interactive-element')) {
-                    closePanel();
-                }
-            });
-        }
+        document.querySelector('#svg-wrapper svg')?.addEventListener('click', (e) => {
+            if (!e.target.closest('.interactive-element')) closePanel();
+        });
+    }
+
+    // --- CONTROLES DE ZOOM E PAN ---
+
+    function ajustarTamanhoInicial() {
+        const svgElement = svgWrapper.querySelector('svg');
+        if (!svgElement) return;
+        const viewBox = svgElement.viewBox?.baseVal || { width: 3100, height: 3000 };
+        const rect = svgViewport.getBoundingClientRect();
+        scale = Math.min(rect.width / viewBox.width, rect.height / viewBox.height, 1);
+        lastTranslateXPx = 0; lastTranslateYPx = 0;
     }
 
     function updateTransform() {
-        svgWrapper.style.transform =
-            `translate(-50%, -50%) translate(${lastTranslateXPx}px, ${lastTranslateYPx}px) scale(${scale})`;
+        svgWrapper.style.transform = `translate(-50%, -50%) translate(${lastTranslateXPx}px, ${lastTranslateYPx}px) scale(${scale})`;
     }
 
-    function resetView() {
-        ajustarTamanhoInicial();
-        updateTransform();
+    function removerDestaques() {
+        document.querySelectorAll('.highlight-blink').forEach(el => el.classList.remove('highlight-blink'));
+    }
+
+    function closePanel() {
+        panel.classList.remove('active');
+        removerDestaques();
     }
 
     svgViewport.addEventListener('mousedown', (e) => {
         if (e.button !== 0) return;
         isDragging = true;
         svgViewport.classList.add('dragging');
-        startX = e.clientX;
-        startY = e.clientY;
+        startX = e.clientX; startY = e.clientY;
     });
 
     window.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
-
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-
-        startX = e.clientX;
-        startY = e.clientY;
-
-        lastTranslateXPx += dx;
-        lastTranslateYPx += dy;
-
+        lastTranslateXPx += e.clientX - startX;
+        lastTranslateYPx += e.clientY - startY;
+        startX = e.clientX; startY = e.clientY;
         updateTransform();
     });
 
-    function pararArraste() {
-        isDragging = false;
-        svgViewport.classList.remove('dragging');
-    }
-
-    window.addEventListener('mouseup', pararArraste);
-    svgViewport.addEventListener('mouseleave', pararArraste);
+    window.addEventListener('mouseup', () => { isDragging = false; svgViewport.classList.remove('dragging'); });
 
     svgViewport.addEventListener('wheel', (e) => {
         e.preventDefault();
-
-        const rect = svgViewport.getBoundingClientRect();
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-
-        const oldScale = scale;
-        const zoomFactor = Math.exp(-e.deltaY * 0.0015);
-        const newScale = Math.min(Math.max(oldScale * zoomFactor, minScale), maxScale);
-
-        if (newScale === oldScale) return;
-
-        const viewportCenterX = rect.width / 2;
-        const viewportCenterY = rect.height / 2;
-
-        const contentX = (mouseX - viewportCenterX - lastTranslateXPx) / oldScale;
-        const contentY = (mouseY - viewportCenterY - lastTranslateYPx) / oldScale;
-
-        scale = newScale;
-
-        lastTranslateXPx = mouseX - viewportCenterX - contentX * scale;
-        lastTranslateYPx = mouseY - viewportCenterY - contentY * scale;
-
-        updateTransform();
-    }, { passive: false });
-
-    window.addEventListener('resize', () => {
-        const previousScale = scale;
-        ajustarTamanhoInicial();
-        if (previousScale > scale) {
+        const factor = Math.exp(-e.deltaY * 0.001);
+        const newScale = Math.min(Math.max(scale * factor, 0.05), 10);
+        if (newScale !== scale) {
+            scale = newScale;
             updateTransform();
         }
-    });
+    }, { passive: false });
 
-    carregarSVG();
-
-    function obterListaConexoes(elemento) {
-    if (!elemento) return [];
-
-    const conexoesRaw =
-        elemento.dataset.conexoes ||
-        elemento.dataset.vrpsConectadas ||
-        elemento.dataset.vrps_conectadas ||
-        '';
-
-    return conexoesRaw
-        .split(',')
-        .map(id => id.trim())
-        .filter(Boolean);
-}
-
-function buscarElementoPorId(id) {
-    return (
-        document.querySelector(`[data-id="${id}"]`) ||
-        document.querySelector(`[data-nomenclatura="${id}"]`)
-    );
-}
-
-function coletarConexoesEmCadeia(idInicial) {
-    const visitados = new Set();
-    const fila = [idInicial];
-    const encontrados = [];
-
-    while (fila.length > 0) {
-        const idAtual = fila.shift();
-
-        if (visitados.has(idAtual)) continue;
-        visitados.add(idAtual);
-
-        const elementoAtual = buscarElementoPorId(idAtual);
-        if (!elementoAtual) {
-            console.warn(`Elemento não encontrado para o ID: "${idAtual}"`);
-            continue;
-        }
-
-        encontrados.push(elementoAtual);
-
-        const proximasConexoes = obterListaConexoes(elementoAtual);
-
-        proximasConexoes.forEach(idConectado => {
-            if (!visitados.has(idConectado)) {
-                fila.push(idConectado);
+    function destacarConexoesEmCadeia(el) {
+        const id = el.dataset.nomenclatura || el.dataset.id;
+        if (!id) return;
+        const visitados = new Set();
+        const fila = [id];
+        while (fila.length > 0) {
+            const currId = fila.shift();
+            if (visitados.has(currId)) continue;
+            visitados.add(currId);
+            const found = document.querySelector(`[data-nomenclatura="${currId}"], [data-id="${currId}"]`);
+            if (found) {
+                if (found !== el) found.classList.add('highlight-blink');
+                const raw = found.dataset.conexoes || found.dataset.vrpsConectadas || found.dataset.vrps_conectadas || '';
+                raw.split(',').map(s => s.trim()).filter(Boolean).forEach(c => fila.push(c));
             }
-        });
+        }
     }
 
-    return encontrados;
-}
-
-function destacarConexoesEmCadeia(elementoOrigem) {
-    if (!elementoOrigem) return;
-
-    const idOrigem =
-        elementoOrigem.dataset.id ||
-        elementoOrigem.dataset.nomenclatura;
-
-    if (!idOrigem) return;
-
-    const elementosConectados = coletarConexoesEmCadeia(idOrigem);
-
-    elementosConectados.forEach(el => {
-        if (el !== elementoOrigem) {
-            el.classList.add('highlight-blink');
-        }
-    });
-}
+    window.onload = carregarSVG;
 </script>
 
 </body>
