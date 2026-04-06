@@ -12,6 +12,15 @@
             --text-color: #333;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -22,31 +31,57 @@
             overflow: hidden;
         }
 
-        /* Contentor onde o SVG será injetado */
         #map-container {
             flex: 1;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
             background-color: #e9ecef;
-            overflow: auto; /* Permite rolar se o mapa for muito grande */
+            overflow: hidden;
+            min-width: 0;
         }
 
-        /* O SVG carregado vai herdar isso */
-        #map-container svg {
-            max-width: 100%;
-            max-height: 90vh;
+        #svg-viewport {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+        }
+
+        #svg-viewport.dragging {
+            cursor: grabbing;
+        }
+
+        #svg-wrapper {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            will-change: transform;
+        }
+
+        #svg-wrapper svg {
+            display: block;
             background: white;
             box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+            max-width: none;
+            max-height: none;
+            overflow: visible;
         }
 
-        /* Estilo para elementos clicáveis do Inkscape */
+        #loading-text {
+            margin: 0;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: #666;
+            font-size: 16px;
+        }
+
         .interactive-element {
             cursor: pointer;
             transition: all 0.2s ease-in-out;
-            /* A linha 'transform-origin: center;' foi removida daqui para evitar que os objetos do SVG mudem de lugar */
         }
 
         .interactive-element:hover {
@@ -55,12 +90,12 @@
 
         .interactive-element text {
             user-select: none;
-            pointer-events: none; 
+            pointer-events: none;
         }
 
-        /* Painel Lateral */
         #info-panel {
             width: 320px;
+            max-width: min(320px, 90vw);
             background: var(--card-bg);
             border-left: 2px solid #ddd;
             padding: 25px;
@@ -68,7 +103,7 @@
             display: flex;
             flex-direction: column;
             transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.35s ease;
             position: absolute;
             right: 0;
             top: 0;
@@ -93,10 +128,23 @@
             color: var(--primary-color);
         }
 
-        .data-row { margin-bottom: 15px; }
-        .data-label { font-size: 0.8rem; color: #666; font-weight: bold; }
-        .data-value { font-size: 1rem; color: var(--text-color); margin-top: 3px; }
-        
+        .data-row {
+            margin-bottom: 15px;
+        }
+
+        .data-label {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .data-value {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-top: 3px;
+            word-break: break-word;
+        }
+
         .close-btn {
             align-self: flex-end;
             background: #eee;
@@ -106,7 +154,10 @@
             cursor: pointer;
             margin-bottom: 20px;
         }
-        .close-btn:hover { background: #ddd; }
+
+        .close-btn:hover {
+            background: #ddd;
+        }
 
         .status-badge {
             display: inline-block;
@@ -116,71 +167,90 @@
             font-weight: bold;
             margin-top: 5px;
         }
-         /* Estilização da Imagem */
+
         #image-container {
             width: 100%;
             height: 200px;
             background-color: #eee;
             overflow: hidden;
-            display: none; /* Escondido por padrão */
+            display: none;
             border-bottom: 1px solid #ddd;
+            margin-top: 10px;
         }
 
         #item-imagem {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+            object-fit: cover;
             display: block;
         }
-        /* Animação para fazer os elementos piscarem */
-        @keyframes blinker {
-        0% {
-            opacity: 1;
-            fill: #ffffff;
-        }
-        50% {
-            opacity: 0.35;
-            fill: #ff4d4d;
-        }
-        100% {
-            opacity: 1;
-            fill: #ffffff;
-        }
-    }
 
-    .highlight-blink {
-        animation: blinker 0.8s ease-in-out infinite;
-        stroke: #ff0000 !important;
-        stroke-width: 3px !important;
-        fill: #ff4d4d !important;
-    }
+        @keyframes blinker {
+            0% {
+                opacity: 1;
+                fill: #ffffff;
+            }
+            50% {
+                opacity: 0.35;
+                fill: #ff4d4d;
+            }
+            100% {
+                opacity: 1;
+                fill: #ffffff;
+            }
+        }
+
+        .highlight-blink {
+            animation: blinker 0.8s ease-in-out infinite;
+            stroke: #ff0000 !important;
+            stroke-width: 3px !important;
+            fill: #ff4d4d !important;
+        }
+
+        .error-box {
+            color: #b00020;
+            background: #ffe8e8;
+            border: 1px solid #ffb3b3;
+            padding: 16px;
+            margin: 20px;
+            border-radius: 8px;
+            max-width: 700px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .error-box code {
+            background: #fff2f2;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
 
 <div id="map-container">
-    <p id="loading-text">A carregar o mapa...</p>
+    <div id="svg-viewport">
+        <div id="svg-wrapper">
+            <p id="loading-text">A carregar o mapa...</p>
+        </div>
+    </div>
 </div>
 
 <div id="info-panel">
-    <!-- Espaço reservado para a foto -->
-    
     <button class="close-btn" onclick="closePanel()">Fechar ✕</button>
-    
+
     <div class="panel-header">
         <h2 id="item-nome">Componente</h2>
         <span id="item-status" class="status-badge">Status</span>
     </div>
 
-    
-
     <div class="data-row">
         <div class="data-label">Nomenclatura</div>
         <div id="item-id" class="data-value">-</div>
     </div>
-    
-    <!-- ESPAÇO MÁGICO: O JavaScript vai criar os campos dinamicamente aqui dentro -->
+
     <div id="campos-dinamicos"></div>
+
     <div id="image-container">
         <img id="item-imagem" src="" alt="Foto do Equipamento">
     </div>
@@ -189,174 +259,394 @@
 <script>
     const panel = document.getElementById('info-panel');
     const mapContainer = document.getElementById('map-container');
+    const svgWrapper = document.getElementById('svg-wrapper');
+    const svgViewport = document.getElementById('svg-viewport');
 
-    // NOME DO SEU ARQUIVO SVG EXATO NO GITHUB
-    const svgFileName = 'TAQUARI 1.svg';
+    const svgFileName = 'VCP2 1.svg';
 
-    // 1. Carregar o SVG externamente
-    fetch(svgFileName)
-        .then(response => {
-            if (!response.ok) throw new Error('Falha ao carregar o SVG');
-            return response.text();
-        })
-        .then(svgData => {
-            // 2. Injetar o SVG no HTML
-            mapContainer.innerHTML = svgData;
-            
-            // 3. Ativar a interatividade agora que o SVG existe na tela
-            ativarInteratividade();
-        })
-        .catch(error => {
-            mapContainer.innerHTML = `<p style="color:red;">Erro ao carregar o mapa: Verifique se o arquivo '${svgFileName}' está na mesma pasta e se você está usando um servidor local.</p>`;
-            console.error(error);
-        });
- function removerDestaques() {
-    const destacados = document.querySelectorAll('.highlight-blink');
-    destacados.forEach(el => el.classList.remove('highlight-blink'));
-}
+    let scale = 1;
+    let minScale = 0.1;
+    let maxScale = 5;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let lastTranslateXPx = 0;
+    let lastTranslateYPx = 0;
 
-function destacarConexoes(conexoes) {
-    if (!conexoes) return;
+    function mostrarErro(msg) {
+        svgWrapper.innerHTML = `
+            <div class="error-box">
+                <strong>Erro ao carregar SVG</strong><br><br>
+                ${msg}
+            </div>
+        `;
+    }
 
-    const idsConectados = conexoes
-        .split(',')
-        .map(id => id.trim())
-        .filter(Boolean);
+    function carregarSVG() {
+        console.log('Tentando carregar SVG:', svgFileName);
+        console.log('URL atual:', window.location.href);
 
-    idsConectados.forEach(idConectado => {
-        const elementoConectado = document.querySelector(`[data-id="${idConectado}"]`);
-
-        if (elementoConectado) {
-            elementoConectado.classList.add('highlight-blink');
-        } else {
-            console.warn(`Equipamento conectado não encontrado: "${idConectado}"`);
-        }
-    });
-}
-
-function closePanel() {
-    panel.classList.remove('active');
-    removerDestaques();
-}
-function closePanel() {
-    panel.classList.remove('active');
-    removerDestaques(); // Adicione esta linha
-}
-    function ativarInteratividade() {
-    const elements = document.querySelectorAll('.interactive-element');
-
-    elements.forEach(el => {
-        el.addEventListener('click', (event) => {
-            removerDestaques();
-            event.stopPropagation();
-
-            const data = el.dataset;
-            const equipamento = data.equipamento;
-
-            // pisca os equipamentos conectados pelo data-conexoes
-            destacarConexoes(data.conexoes);
-
-            document.getElementById('item-nome').innerText = data.equipamento || 'Desconhecido';
-            document.getElementById('item-id').innerText = data.nomenclatura || 'N/A';
-
-            const imgContainer = document.getElementById('image-container');
-            const imgElement = document.getElementById('item-imagem');
-
-            if (data.imagem) {
-                imgElement.src = data.imagem;
-                imgContainer.style.display = 'block';
-            } else {
-                imgElement.src = '';
-                imgContainer.style.display = 'none';
-            }
-
-            const statusEl = document.getElementById('item-status');
-            if (data.status) {
-                statusEl.style.display = 'inline-block';
-                statusEl.innerText = data.status;
-
-                if (
-                    data.status === 'Operacional' ||
-                    data.status === 'Normal' ||
-                    data.status === 'Em funcionamento' ||
-                    data.status === 'Em operação'
-                ) {
-                    statusEl.style.background = '#e8f5e9';
-                    statusEl.style.color = '#2e7d32';
-                } else if (
-                    data.status === 'Atenção' ||
-                    data.status === 'Alerta' ||
-                    data.status === 'Alerta de Pressão'
-                ) {
-                    statusEl.style.background = '#fff3e0';
-                    statusEl.style.color = '#e65100';
-                } else {
-                    statusEl.style.background = '#e1f5fe';
-                    statusEl.style.color = '#01579b';
+        fetch(svgFileName)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Arquivo não encontrado (${response.status})`);
                 }
-            } else {
-                statusEl.style.display = 'none';
-            }
-
-            const camposDinamicos = document.getElementById('campos-dinamicos');
-            let htmlCampos = '';
-
-            function adicionarCampo(label, valor) {
-                if (valor !== undefined && valor !== '') {
-                    htmlCampos += `
-                        <div class="data-row">
-                            <div class="data-label">${label}</div>
-                            <div class="data-value">${valor}</div>
-                        </div>`;
+                return response.text();
+            })
+            .then(svgData => {
+                if (!svgData || !svgData.includes('<svg')) {
+                    throw new Error('O arquivo carregado não é um SVG válido.');
                 }
-            }
 
-            if (equipamento === 'Reservatório') {
-                adicionarCampo('ETA', data.eta);
-                adicionarCampo('Sistema', data.sistema);
-                adicionarCampo('Volume total (m³)', data.volumeTotal);
-                adicionarCampo('Volume em operação (m³)', data.volumeOperacao);
-                adicionarCampo('Vazão saída (l/s)', data.vazaoSaida);
-                adicionarCampo('Área de Abrangência', data.areaAbrangencia);
+                svgWrapper.innerHTML = svgData;
 
-            } else if (equipamento === 'VRP') {
-                adicionarCampo('Diâmetro', data.diametro);
-                adicionarCampo('Pressão Montante', data.pressaoMontante);
-                adicionarCampo('Pressão Jusante', data.pressaoJusante);
-                adicionarCampo('Daynight', data.daynight);
-                adicionarCampo('Nº de Ligações', data.ligacoes);
-                adicionarCampo('Conexões', data.conexoes);
+                ajustarTamanhoInicial();
+                updateTransform();
+                ativarInteratividade();
+            })
+            .catch(error => {
+                console.error('Erro ao carregar o SVG:', error);
 
-            } else if (equipamento === 'VRP/Macro') {
-                adicionarCampo('VRP', data.nomenclaturaVrp);
-                adicionarCampo('Macro', data.nomenclaturaMacro);
-                adicionarCampo('Diâmetro', data.diametro);
-                adicionarCampo('Pressão Montante', data.pressaoMontante);
-                adicionarCampo('Pressão Jusante', data.pressaoJusante);
-                adicionarCampo('Daynight', data.daynight);
-                adicionarCampo('Vazão Jusante', data.vazaoJusante);
-                adicionarCampo('DMC', data.dmc);
-                adicionarCampo('Nº de Ligações', data.ligacoes);
-                adicionarCampo('Conexões', data.conexoes);
-            }
+                mostrarErro(`
+                    ${error.message}<br><br>
+                    Verifique os pontos abaixo:
+                    <ul>
+                        <li>O arquivo <code>${svgFileName}</code> está na mesma pasta do HTML</li>
+                        <li>O nome do arquivo está exatamente igual, incluindo espaço e extensão</li>
+                        <li>Você está abrindo por servidor local, e não por <code>file:///</code></li>
+                    </ul>
+                    Exemplo correto: <code>http://localhost:8000</code>
+                `);
+            });
+    }
 
-            camposDinamicos.innerHTML = htmlCampos;
-            panel.classList.add('active');
-        });
-    });
+    function ajustarTamanhoInicial() {
+        const svgElement = svgWrapper.querySelector('svg');
+        if (!svgElement) return;
 
-    const svgElement = document.querySelector('svg');
-    if (svgElement) {
-        svgElement.addEventListener('click', (e) => {
-            if (!e.target.closest('.interactive-element')) {
-                closePanel();
+        const viewBox = svgElement.viewBox && svgElement.viewBox.baseVal;
+        const svgWidth = viewBox && viewBox.width ? viewBox.width : (svgElement.width?.baseVal?.value || 3100);
+        const svgHeight = viewBox && viewBox.height ? viewBox.height : (svgElement.height?.baseVal?.value || 3000);
+
+        const viewportRect = svgViewport.getBoundingClientRect();
+        if (!viewportRect.width || !viewportRect.height) return;
+
+        const scaleX = viewportRect.width / svgWidth;
+        const scaleY = viewportRect.height / svgHeight;
+
+        scale = Math.min(scaleX, scaleY, 1);
+        minScale = Math.max(scale * 0.5, 0.05);
+        maxScale = Math.max(scale * 12, 5);
+
+        lastTranslateXPx = 0;
+        lastTranslateYPx = 0;
+    }
+
+    function removerDestaques() {
+        const destacados = document.querySelectorAll('.highlight-blink');
+        destacados.forEach(el => el.classList.remove('highlight-blink'));
+    }
+
+    function destacarConexoes(conexoes) {
+        if (!conexoes) return;
+
+        const idsConectados = conexoes
+            .split(',')
+            .map(id => id.trim())
+            .filter(Boolean);
+
+        idsConectados.forEach(idConectado => {
+            const elementoConectado =
+                document.querySelector(`[data-id="${idConectado}"]`) ||
+                document.querySelector(`[data-nomenclatura="${idConectado}"]`);
+
+            if (elementoConectado) {
+                elementoConectado.classList.add('highlight-blink');
+            } else {
+                console.warn(`Equipamento conectado não encontrado: "${idConectado}"`);
             }
         });
     }
+
+    function closePanel() {
+        panel.classList.remove('active');
+        removerDestaques();
+    }
+
+    function ativarInteratividade() {
+        const elements = document.querySelectorAll('.interactive-element');
+
+        elements.forEach(el => {
+            el.addEventListener('click', (event) => {
+                removerDestaques();
+                event.stopPropagation();
+
+                const data = el.dataset;
+                const equipamento = data.equipamento;
+
+                destacarConexoesEmCadeia(el);
+
+                document.getElementById('item-nome').innerText =
+                    data.nome || data.equipamento || 'Desconhecido';
+
+                document.getElementById('item-id').innerText =
+                    data.nomenclatura || 'N/A';
+
+                const imgContainer = document.getElementById('image-container');
+                const imgElement = document.getElementById('item-imagem');
+
+                if (data.imagem) {
+                    imgElement.src = data.imagem;
+                    imgContainer.style.display = 'block';
+                } else {
+                    imgElement.src = '';
+                    imgContainer.style.display = 'none';
+                }
+
+                const statusEl = document.getElementById('item-status');
+                if (data.status) {
+                    statusEl.style.display = 'inline-block';
+                    statusEl.innerText = data.status;
+
+                    if (
+                        data.status === 'Operacional' ||
+                        data.status === 'Normal' ||
+                        data.status === 'Em funcionamento' ||
+                        data.status === 'Em operação'
+                    ) {
+                        statusEl.style.background = '#e8f5e9';
+                        statusEl.style.color = '#2e7d32';
+                    } else if (
+                        data.status === 'Atenção' ||
+                        data.status === 'Alerta' ||
+                        data.status === 'Alerta de Pressão'
+                    ) {
+                        statusEl.style.background = '#fff3e0';
+                        statusEl.style.color = '#e65100';
+                    } else {
+                        statusEl.style.background = '#e1f5fe';
+                        statusEl.style.color = '#01579b';
+                    }
+                } else {
+                    statusEl.style.display = 'none';
+                }
+
+                const camposDinamicos = document.getElementById('campos-dinamicos');
+                let htmlCampos = '';
+
+                function adicionarCampo(label, valor) {
+                    if (valor !== undefined && valor !== '') {
+                        htmlCampos += `
+                            <div class="data-row">
+                                <div class="data-label">${label}</div>
+                                <div class="data-value">${valor}</div>
+                            </div>`;
+                    }
+                }
+
+                if (equipamento === 'Reservatório') {
+                    adicionarCampo('ETA', data.eta);
+                    adicionarCampo('Sistema', data.sistema);
+                    adicionarCampo('Volume total (m³)', data.volumeTotal);
+                    adicionarCampo('Volume em operação (m³)', data.volumeOperacao);
+                    adicionarCampo('Vazão saída (l/s)', data.vazaoSaida);
+                    adicionarCampo('Área de Abrangência', data.areaAbrangencia);
+
+                } else if (equipamento === 'VRP') {
+                    adicionarCampo('Diâmetro', data.diametro);
+                    adicionarCampo('Pressão Montante', data.pressaoMontante);
+                    adicionarCampo('Pressão Jusante', data.pressaoJusante);
+                    adicionarCampo('Daynight', data.daynight);
+                    adicionarCampo('Nº de Ligações', data.ligacoes);
+                    adicionarCampo('VRPs Conectadas', data.vrpsConectadas || data.vrps_conectadas);
+
+                } else if (equipamento === 'VRP/Macro') {
+                    adicionarCampo('VRP', data.nomenclaturaVrp);
+                    adicionarCampo('Macro', data.nomenclaturaMacro);
+                    adicionarCampo('Diâmetro', data.diametro);
+                    adicionarCampo('Pressão Montante', data.pressaoMontante);
+                    adicionarCampo('Pressão Jusante', data.pressaoJusante);
+                    adicionarCampo('Daynight', data.daynight);
+                    adicionarCampo('Vazão Jusante', data.vazaoJusante);
+                    adicionarCampo('DMC', data.dmc);
+                    adicionarCampo('Nº de Ligações', data.ligacoes);
+                    adicionarCampo('VRPs Conectadas', data.vrpsConectadas || data.vrps_conectadas);
+
+                } else if (equipamento === 'Booster') {
+                    adicionarCampo('Diâmetro', data.diametro);
+                    adicionarCampo('Pressão Jusante', data.pressaoJusante);
+                    adicionarCampo('Nº de Ligações', data.ligacoes);
+                    adicionarCampo('Conexões', data.vrpsConectadas || data.vrps_conectadas);
+                }else if (equipamento === 'Macro') {
+                    adicionarCampo('Diâmetro', data.diametro);
+                    adicionarCampo('Vazão saída (l/s)', data.vazaoJusante);
+                    adicionarCampo('DMC', data.dmc);
+                    adicionarCampo('Conexões', data.vrpsConectadas || data.vrps_conectadas);
+                }
+
+                camposDinamicos.innerHTML = htmlCampos;
+                panel.classList.add('active');
+            });
+        });
+
+        const svgElement = document.querySelector('#svg-wrapper svg');
+        if (svgElement) {
+            svgElement.addEventListener('click', (e) => {
+                if (!e.target.closest('.interactive-element')) {
+                    closePanel();
+                }
+            });
+        }
+    }
+
+    function updateTransform() {
+        svgWrapper.style.transform =
+            `translate(-50%, -50%) translate(${lastTranslateXPx}px, ${lastTranslateYPx}px) scale(${scale})`;
+    }
+
+    function resetView() {
+        ajustarTamanhoInicial();
+        updateTransform();
+    }
+
+    svgViewport.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return;
+        isDragging = true;
+        svgViewport.classList.add('dragging');
+        startX = e.clientX;
+        startY = e.clientY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        startX = e.clientX;
+        startY = e.clientY;
+
+        lastTranslateXPx += dx;
+        lastTranslateYPx += dy;
+
+        updateTransform();
+    });
+
+    function pararArraste() {
+        isDragging = false;
+        svgViewport.classList.remove('dragging');
+    }
+
+    window.addEventListener('mouseup', pararArraste);
+    svgViewport.addEventListener('mouseleave', pararArraste);
+
+    svgViewport.addEventListener('wheel', (e) => {
+        e.preventDefault();
+
+        const rect = svgViewport.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        const oldScale = scale;
+        const zoomFactor = Math.exp(-e.deltaY * 0.0015);
+        const newScale = Math.min(Math.max(oldScale * zoomFactor, minScale), maxScale);
+
+        if (newScale === oldScale) return;
+
+        const viewportCenterX = rect.width / 2;
+        const viewportCenterY = rect.height / 2;
+
+        const contentX = (mouseX - viewportCenterX - lastTranslateXPx) / oldScale;
+        const contentY = (mouseY - viewportCenterY - lastTranslateYPx) / oldScale;
+
+        scale = newScale;
+
+        lastTranslateXPx = mouseX - viewportCenterX - contentX * scale;
+        lastTranslateYPx = mouseY - viewportCenterY - contentY * scale;
+
+        updateTransform();
+    }, { passive: false });
+
+    window.addEventListener('resize', () => {
+        const previousScale = scale;
+        ajustarTamanhoInicial();
+        if (previousScale > scale) {
+            updateTransform();
+        }
+    });
+
+    carregarSVG();
+
+    function obterListaConexoes(elemento) {
+    if (!elemento) return [];
+
+    const conexoesRaw =
+        elemento.dataset.conexoes ||
+        elemento.dataset.vrpsConectadas ||
+        elemento.dataset.vrps_conectadas ||
+        '';
+
+    return conexoesRaw
+        .split(',')
+        .map(id => id.trim())
+        .filter(Boolean);
 }
 
+function buscarElementoPorId(id) {
+    return (
+        document.querySelector(`[data-id="${id}"]`) ||
+        document.querySelector(`[data-nomenclatura="${id}"]`)
+    );
+}
 
-    
+function coletarConexoesEmCadeia(idInicial) {
+    const visitados = new Set();
+    const fila = [idInicial];
+    const encontrados = [];
+
+    while (fila.length > 0) {
+        const idAtual = fila.shift();
+
+        if (visitados.has(idAtual)) continue;
+        visitados.add(idAtual);
+
+        const elementoAtual = buscarElementoPorId(idAtual);
+        if (!elementoAtual) {
+            console.warn(`Elemento não encontrado para o ID: "${idAtual}"`);
+            continue;
+        }
+
+        encontrados.push(elementoAtual);
+
+        const proximasConexoes = obterListaConexoes(elementoAtual);
+
+        proximasConexoes.forEach(idConectado => {
+            if (!visitados.has(idConectado)) {
+                fila.push(idConectado);
+            }
+        });
+    }
+
+    return encontrados;
+}
+
+function destacarConexoesEmCadeia(elementoOrigem) {
+    if (!elementoOrigem) return;
+
+    const idOrigem =
+        elementoOrigem.dataset.id ||
+        elementoOrigem.dataset.nomenclatura;
+
+    if (!idOrigem) return;
+
+    const elementosConectados = coletarConexoesEmCadeia(idOrigem);
+
+    elementosConectados.forEach(el => {
+        if (el !== elementoOrigem) {
+            el.classList.add('highlight-blink');
+        }
+    });
+}
 </script>
 
 </body>
