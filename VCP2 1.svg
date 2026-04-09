@@ -28,13 +28,13 @@
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
      inkscape:zoom="0.38042345"
-     inkscape:cx="2641.793"
-     inkscape:cy="914.77011"
-     inkscape:window-width="1150"
-     inkscape:window-height="1000"
-     inkscape:window-x="953"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
+     inkscape:cx="1201.2929"
+     inkscape:cy="408.75503"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
      showguides="false" />
   <defs
@@ -228,7 +228,7 @@
        data-diametro="50 mm"
        data-ligacoes="34"
        data-pressao-jusante="10 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/1357/VCP%20A%c3%87%c3%83O%20DIRETA%20191878%20-%20CAS%20CH%2038.jpg"
        data-id="191878"
        data-conexoes="5279259"
        id="g4">
@@ -319,7 +319,7 @@
        data-diametro="50 mm"
        data-ligacoes="23"
        data-pressao-jusante="10 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/1355/VCP%20A%c3%87%c3%83O%20DIRETA%20216878%20-%20CAS%20CH%2037.jpg"
        data-conexoes="527824"
        data-id="216878"
        id="g5">
@@ -757,7 +757,6 @@
        data-nomenclatura="RAP.VCP.001"
        data-vazao-saida="360 l/s"
        id="g7"
-       data-conexoes="708103"
        data-ligacoes="709">
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:#3b00df;stroke-width:3;stroke-dasharray:none;stroke-opacity:1"
@@ -2546,7 +2545,7 @@
        data-equipamento="Booster"
        data-nome="Booster EBO.VCP.001"
        data-nomenclatura="EBO.VCP.001"
-       data-status="Em funcionamento"
+       data-status="Em Operação"
        data-diametro="250 mm"
        data-pressao-jusante="15 mca"
        transform="matrix(0.12689045,0,0,0.12689045,-3009.5156,-355.99569)"
@@ -2689,7 +2688,8 @@
        data-pressao-montante="30 mca"
        data-id="166467"
        data-conexoes="5236827"
-       id="g33">
+       id="g33"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/1328/vrp.vcp.047.jpg">
       <path
          d="m 13039.8,3361.14 c 0,-6.21 -1.2,-12.37 -3.5,-18.11 -2.4,-5.74 -5.9,-10.96 -10.3,-15.36 -4.4,-4.39 -9.6,-7.88 -15.3,-10.26 -5.8,-2.38 -11.9,-3.61 -18.1,-3.61 -6.2,0 -12.4,1.23 -18.1,3.61 -5.8,2.38 -11,5.87 -15.4,10.26 -4.3,4.4 -7.8,9.62 -10.2,15.36 -2.4,5.74 -3.6,11.9 -3.6,18.11 0,6.21 1.2,12.37 3.6,18.11 2.4,5.74 5.9,10.96 10.2,15.36 4.4,4.4 9.6,7.88 15.4,10.26 5.7,2.38 11.9,3.61 18.1,3.61 6.2,0 12.3,-1.23 18.1,-3.61 5.7,-2.38 10.9,-5.86 15.3,-10.26 4.4,-4.4 7.9,-9.62 10.3,-15.36 2.3,-5.74 3.5,-11.9 3.5,-18.11 z"
          stroke="#ffff64"
@@ -3003,7 +3003,7 @@
        data-equipamento="VRP"
        data-nome="VRPVRP.VCP.025"
        data-nomenclatura="VRP.VCP.025"
-       data-status="Em funcionamento"
+       data-status="Em Operação"
        data-diametro="400 mm"
        data-ligacoes="8138"
        data-pressao-jusante="15 mca"
@@ -3316,11 +3316,13 @@
        transform="matrix(0.13729049,0,0,0.13729049,-678.59683,-982.73088)"
        data-nome="Macro VZ1.AAT.VCP.010"
        data-vazao-jusante="360 l/s"
-       data-status="Em operação"
+       data-status="Em Operação"
        class="interactive-element"
-       data-equipamento="Macro"
+       data-equipamento="VRP/Macro"
        data-diametro="800 mm"
-       data-nomenclatura="VZ1.AAT.VCP.010">
+       data-nomenclatura="VZ1.AAT.VCP.010"
+       data-conexoes="21289, 58630, 4817, 158867, 4814, 54630, 6502, 7074, 4809, 708103, 8253"
+       data-ligacoes="30445">
       <g
          id="g24-8"
          transform="matrix(13.972988,0,0,13.972988,-2750.7256,1165.071)">
@@ -3464,7 +3466,7 @@
        data-equipamento="VRP"
        data-nome="VRP VRP.TAQ.003"
        data-nomenclatura="VRP.TAQ.003"
-       data-status="Em funcionamento"
+       data-status="Em Operação"
        data-diametro="100 mm"
        data-ligacoes="50"
        data-pressao-jusante="30 mca"
@@ -4510,7 +4512,8 @@
        data-id="4817"
        data-conexoes="638058"
        data-nomenclatura-macro="VZ2.SAT.VCP.011"
-       id="g71">
+       id="g71"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/942/vrp.vcp.009.png">
       <g
          id="g46-4-1-3"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -4710,59 +4713,6 @@
       </g>
     </g>
     <g
-       transform="matrix(0.13729049,0,0,0.13729049,403.65951,-423.79522)"
-       inkscape:transform-center-x="156.24506"
-       inkscape:transform-center-y="-46.493962"
-       class="interactive-element"
-       data-equipamento="VRP/Macro"
-       data-nome="VRP/Macro VRP.VCP.002/VZ1.SAT.VCP.012"
-       data-nomenclatura="VRP.VCP.002/VZ1.SAT.VCP.012"
-       data-nomenclatura-vrp="VRP.VCP.002"
-       data-status="Em Operação"
-       data-diametro="150"
-       data-ligacoes="8339"
-       data-pressao-montante="42 mca"
-       data-pressao-jusante="10 mca"
-       data-vazao-jusante="3 l/s"
-       data-vrps-conectadas="VRP.VCP.003/VZ2.SAT.VCP.012, VRP.VCP.029, VRP.VCP.031, VRP.VCP.028, VRP.VCP.005 A, VRP.VCP.005 B, VRP.VCP.030, VRP.VCP.014, VRP.VCP.004 A, VRP.VCP.004 B"
-       data-dmc="DMC.VCP.014"
-       data-id="6502"
-       data-nomenclatura-macro="VZ1.SAT.VCP.012"
-       data-conexoes="177079,615726,45024,6782643,5900,5901,6295551,37421,5186641,6186718,58733,5169739,5810,5811,5188784,44631,636881,4584,5266367"
-       id="g75">
-      <g
-         id="g46-4-1-35"
-         transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
-        <path
-           d="m 904.68516,577.09174 11.29513,-11.91065"
-           stroke="#0000ff"
-           stroke-width="0.5"
-           stroke-linecap="round"
-           fill="none"
-           id="path44-8-0-65"
-           sodipodi:nodetypes="cc"
-           style="fill:#ffffff;fill-opacity:1;stroke:#0000ff;stroke-opacity:1" />
-        <path
-           id="ellipse44-4-8-8"
-           style="fill:#ffffff;stroke:#0000ff;stroke-width:0.521279"
-           d="m 914.57014,571.44165 a 4.4593582,4.4290228 0 0 1 -4.45936,4.42902 4.4593582,4.4290228 0 0 1 -4.45936,-4.42902 4.4593582,4.4290228 0 0 1 4.45936,-4.42902 4.4593582,4.4290228 0 0 1 4.45936,4.42902 z" />
-        <path
-           id="path45-9-5-3"
-           style="fill:#ffffff;stroke:#0000ff;stroke-width:5.829"
-           inkscape:transform-center-x="-0.00748337"
-           inkscape:transform-center-y="1.8358401"
-           transform="matrix(0.0899917,0,0,-0.08886896,14.645406,1381.5565)"
-           d="m 9987.7689,9137.1185 -37.1964,0.4169 -37.1985,0.1418 18.2371,-32.4215 18.4765,-32.2857 18.9593,32.0046 z" />
-        <path
-           d="m 916.18259,569.249 -0.2023,-4.06791 -4.0679,0.2023"
-           stroke="#0000ff"
-           stroke-width="0.5"
-           fill="none"
-           id="path46-2-0-9"
-           style="fill:none;fill-opacity:1;stroke:#0000ff;stroke-opacity:1" />
-      </g>
-    </g>
-    <g
        transform="matrix(0.13729049,0,0,0.13729049,-604.78244,-462.77593)"
        inkscape:transform-center-x="156.24506"
        inkscape:transform-center-y="-46.493962"
@@ -4826,7 +4776,7 @@
        data-nomenclatura="VRP.VCP.017/VZ6.SAT.VCP.014"
        data-nomeclatura-macro="VZ6.SAT.VCP.014"
        data-nomenclatura-vrp="VRP.VCP.017"
-       data-status="Em operação"
+       data-status="Em Operação"
        data-diametro="75 mm"
        data-ligacoes="470"
        data-pressao-montante="30 mca"
@@ -4944,7 +4894,8 @@
        data-dmc="DMC.VCP.003"
        data-id="97948"
        data-conexoes="5339979, 6657"
-       id="g79">
+       id="g79"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/549/vrp.vcp.036.jpg">
       <g
          id="g46-4-1-68"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -5315,13 +5266,13 @@
        transform="matrix(0,0.17080775,-0.17080775,0,1771.141,176.76173)"
        class="interactive-element"
        data-equipamento="VRP"
-       data-nome="VRP VRP.TAQ.003"
+       data-nome="VRP VRP de Ação Direta (114651)"
        data-nomenclatura="VRP de Ação Direta (114651)"
        data-status="Em Operação"
        data-diametro="50 mm"
        data-ligacoes="31"
        data-pressao-jusante="10 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/1358/VCP%20A%c3%87%c3%83O%20DIRETA%20114651%20-%20CAS%20CH%20139.jpeg"
        data-id="114651"
        data-conexoes="5294401"
        id="g84">
@@ -5360,7 +5311,7 @@
        data-nomenclatura="VRP.VCP.035/VZ2.SAT.VCP.014"
        data-nomeclatura-macro="VZ2.SAT.VCP.014"
        data-nomenclatura-vrp="VRP.VCP.035"
-       data-status="Em operação"
+       data-status="Em Operação"
        data-diametro="100 mm"
        data-ligacoes="1788"
        data-pressao-montante="35 mca"
@@ -5455,7 +5406,7 @@
        data-nomenclatura="VRP.VCP.038/VZ1.DMC.VCP.038"
        data-nomeclatura-macro="VZ1.DMC.VCP.038"
        data-nomenclatura-vrp="VRP.VCP.038"
-       data-status="Em operação"
+       data-status="Em Operação"
        data-diametro="50 mm"
        data-ligacoes="189"
        data-pressao-montante="25 mca"
@@ -5637,51 +5588,10 @@
          y="2204.9248"
          style="font-size:5.33333px;fill:#000000;fill-opacity:1" /></text>
     <g
-       transform="matrix(0,0.17080775,-0.17080775,0,2279.4585,136.02341)"
-       class="interactive-element"
-       data-equipamento="VRP"
-       data-nome="VRP VRP.VCP.042"
-       data-nomenclatura="VRP.VCP.042"
-       data-status="Em Operação"
-       data-diametro="100 mm"
-       data-ligacoes="251"
-       data-pressao-jusante="12 mca"
-       data-pressao-montante="35 mca"
-       data-vrps-conectadas="VRP.VCP.048"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
-       data-id="128982"
-       data-conexoes="5287642,237777"
-       id="g88">
-      <path
-         d="m 13039.8,3361.14 c 0,-6.21 -1.2,-12.37 -3.5,-18.11 -2.4,-5.74 -5.9,-10.96 -10.3,-15.36 -4.4,-4.39 -9.6,-7.88 -15.3,-10.26 -5.8,-2.38 -11.9,-3.61 -18.1,-3.61 -6.2,0 -12.4,1.23 -18.1,3.61 -5.8,2.38 -11,5.87 -15.4,10.26 -4.3,4.4 -7.8,9.62 -10.2,15.36 -2.4,5.74 -3.6,11.9 -3.6,18.11 0,6.21 1.2,12.37 3.6,18.11 2.4,5.74 5.9,10.96 10.2,15.36 4.4,4.4 9.6,7.88 15.4,10.26 5.7,2.38 11.9,3.61 18.1,3.61 6.2,0 12.3,-1.23 18.1,-3.61 5.7,-2.38 10.9,-5.86 15.3,-10.26 4.4,-4.4 7.9,-9.62 10.3,-15.36 2.3,-5.74 3.5,-11.9 3.5,-18.11 z"
-         stroke="#ffff64"
-         stroke-width="7"
-         stroke-linecap="round"
-         id="path277" />
-      <path
-         d="m 13036.7,3361.15 -66.2,-38.26"
-         stroke="#ffffff"
-         stroke-width="7"
-         stroke-linecap="round"
-         id="path278" />
-      <path
-         d="m 13036.7,3361.15 -66.2,38.25"
-         stroke="#ffffff"
-         stroke-width="7"
-         stroke-linecap="round"
-         id="path279" />
-      <path
-         d="m 12970.5,3399.4 v -76.51"
-         stroke="#ffffff"
-         stroke-width="7"
-         stroke-linecap="round"
-         id="path280" />
-    </g>
-    <g
        transform="matrix(0,0.17080775,-0.17080775,0,2381.48,-49.761443)"
        class="interactive-element"
        data-equipamento="VRP"
-       data-nome="VRP VRP.TAQ.003"
+       data-nome="VRP VRP.VCP.048"
        data-nomenclatura="VRP.VCP.048"
        data-status="Em Operação"
        data-diametro="50 mm"
@@ -5769,45 +5679,6 @@
          id="tspan57"><tspan
            style="fill:#000000"
            id="tspan56">189276</tspan></tspan></text>
-    <g
-       transform="matrix(0,0.17080775,-0.17080775,0,2218.2977,325.03297)"
-       class="interactive-element"
-       data-equipamento="VRP"
-       data-nome="VRP VRP de Ação Direta (189276)"
-       data-nomenclatura="VRP de Ação Direta (189276)"
-       data-status="Em Operação"
-       data-diametro="50 mm"
-       data-ligacoes="33"
-       data-pressao-jusante="10 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
-       data-id="189276"
-       data-conexoes="5288721"
-       id="g90">
-      <path
-         d="m 13039.8,3361.14 c 0,-6.21 -1.2,-12.37 -3.5,-18.11 -2.4,-5.74 -5.9,-10.96 -10.3,-15.36 -4.4,-4.39 -9.6,-7.88 -15.3,-10.26 -5.8,-2.38 -11.9,-3.61 -18.1,-3.61 -6.2,0 -12.4,1.23 -18.1,3.61 -5.8,2.38 -11,5.87 -15.4,10.26 -4.3,4.4 -7.8,9.62 -10.2,15.36 -2.4,5.74 -3.6,11.9 -3.6,18.11 0,6.21 1.2,12.37 3.6,18.11 2.4,5.74 5.9,10.96 10.2,15.36 4.4,4.4 9.6,7.88 15.4,10.26 5.7,2.38 11.9,3.61 18.1,3.61 6.2,0 12.3,-1.23 18.1,-3.61 5.7,-2.38 10.9,-5.86 15.3,-10.26 4.4,-4.4 7.9,-9.62 10.3,-15.36 2.3,-5.74 3.5,-11.9 3.5,-18.11 z"
-         stroke="#ffff64"
-         stroke-width="7"
-         stroke-linecap="round"
-         id="path288" />
-      <path
-         d="m 13036.7,3361.15 -66.2,-38.26"
-         stroke="#ffffff"
-         stroke-width="7"
-         stroke-linecap="round"
-         id="path289" />
-      <path
-         d="m 13036.7,3361.15 -66.2,38.25"
-         stroke="#ffffff"
-         stroke-width="7"
-         stroke-linecap="round"
-         id="path290" />
-      <path
-         d="m 12970.5,3399.4 v -76.51"
-         stroke="#ffffff"
-         stroke-width="7"
-         stroke-linecap="round"
-         id="path291" />
-    </g>
     <rect
        style="fill:#058f16;fill-opacity:1;stroke-width:2.00677;stroke-dasharray:none"
        id="rect291"
@@ -5910,7 +5781,6 @@
        data-ligacoes="107"
        data-pressao-jusante="15 mca"
        data-pressao-montante="35 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
        data-id="160067"
        data-conexoes="5293189"
        id="g91">
@@ -6110,7 +5980,7 @@
        data-nome="VRP/Macro VRP.VCP.008/VZ4.SAT.VCP.014"
        data-nomenclatura="VRP.VCP.008/VZ4.SAT.VCP.014"
        data-nomenclatura-vrp="VRP.VCP.008"
-       data-status="Em operação"
+       data-status="Em Operação"
        data-diametro="75 mm"
        data-ligacoes="441"
        data-pressao-montante="45 mca"
@@ -6693,6 +6563,138 @@
          stroke-width="7"
          stroke-linecap="round"
          id="path93" />
+    </g>
+    <g
+       transform="matrix(0.13729049,0,0,0.13729049,402.60988,-422.81634)"
+       inkscape:transform-center-x="156.24506"
+       inkscape:transform-center-y="-46.493962"
+       class="interactive-element"
+       data-equipamento="VRP/Macro"
+       data-nome="VRP/Macro VRP.VCP.002/VZ1.SAT.VCP.012"
+       data-nomenclatura="VRP.VCP.002/VZ1.SAT.VCP.012"
+       data-nomenclatura-vrp="VRP.VCP.002"
+       data-status="Em Operação"
+       data-diametro="150 mm"
+       data-ligacoes="447"
+       data-pressao-montante="42 mca"
+       data-pressao-jusante="10 mca"
+       data-vrps-conectadas="VRP.VCP.004, VRP.VCP.029, VRP.VCP.031, VRP.VCP.028, VRP.VCP.005, VRP.VCP.030, VRP.VCP.014"
+       data-dmc="DMC.VCP.014"
+       data-id="6502"
+       data-nomenclatura-macro="VZ1.SAT.VCP.012"
+       data-conexoes="177079, 58733, 37421, 5810, 6186718"
+       id="g18"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/450/resized-0f236831-5564-4545-a49f-badbd218fd96.jpg">
+      <g
+         id="g17"
+         transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
+        <path
+           d="m 904.68516,577.09174 11.29513,-11.91065"
+           stroke="#0000ff"
+           stroke-width="0.5"
+           stroke-linecap="round"
+           fill="none"
+           id="path14"
+           sodipodi:nodetypes="cc"
+           style="fill:#ffffff;fill-opacity:1;stroke:#0000ff;stroke-opacity:1" />
+        <path
+           id="path15"
+           style="fill:#ffffff;stroke:#0000ff;stroke-width:0.521279"
+           d="m 914.57014,571.44165 a 4.4593582,4.4290228 0 0 1 -4.45936,4.42902 4.4593582,4.4290228 0 0 1 -4.45936,-4.42902 4.4593582,4.4290228 0 0 1 4.45936,-4.42902 4.4593582,4.4290228 0 0 1 4.45936,4.42902 z" />
+        <path
+           id="path16"
+           style="fill:#ffffff;stroke:#0000ff;stroke-width:5.829"
+           inkscape:transform-center-x="-0.00748337"
+           inkscape:transform-center-y="1.8358401"
+           transform="matrix(0.0899917,0,0,-0.08886896,14.645406,1381.5565)"
+           d="m 9987.7689,9137.1185 -37.1964,0.4169 -37.1985,0.1418 18.2371,-32.4215 18.4765,-32.2857 18.9593,32.0046 z" />
+        <path
+           d="m 916.18259,569.249 -0.2023,-4.06791 -4.0679,0.2023"
+           stroke="#0000ff"
+           stroke-width="0.5"
+           fill="none"
+           id="path17"
+           style="fill:none;fill-opacity:1;stroke:#0000ff;stroke-opacity:1" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0,0.17080775,-0.17080775,0,2277.6484,134.24403)"
+       class="interactive-element"
+       data-equipamento="VRP"
+       data-nome="VRP VRP.VCP.042"
+       data-nomenclatura="VRP.VCP.042"
+       data-status="Em Operação"
+       data-diametro="50 mm"
+       data-ligacoes="98"
+       data-pressao-jusante="12 mca"
+       data-pressao-montante="35 mca"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/1079/vrp.vcp.042.png"
+       data-id="128982"
+       data-conexoes="237777, 5287642"
+       id="g48">
+      <path
+         d="m 13039.8,3361.14 c 0,-6.21 -1.2,-12.37 -3.5,-18.11 -2.4,-5.74 -5.9,-10.96 -10.3,-15.36 -4.4,-4.39 -9.6,-7.88 -15.3,-10.26 -5.8,-2.38 -11.9,-3.61 -18.1,-3.61 -6.2,0 -12.4,1.23 -18.1,3.61 -5.8,2.38 -11,5.87 -15.4,10.26 -4.3,4.4 -7.8,9.62 -10.2,15.36 -2.4,5.74 -3.6,11.9 -3.6,18.11 0,6.21 1.2,12.37 3.6,18.11 2.4,5.74 5.9,10.96 10.2,15.36 4.4,4.4 9.6,7.88 15.4,10.26 5.7,2.38 11.9,3.61 18.1,3.61 6.2,0 12.3,-1.23 18.1,-3.61 5.7,-2.38 10.9,-5.86 15.3,-10.26 4.4,-4.4 7.9,-9.62 10.3,-15.36 2.3,-5.74 3.5,-11.9 3.5,-18.11 z"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path22" />
+      <path
+         d="m 13036.7,3361.15 -66.2,-38.26"
+         stroke="#ffffff"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path23" />
+      <path
+         d="m 13036.7,3361.15 -66.2,38.25"
+         stroke="#ffffff"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path24" />
+      <path
+         d="m 12970.5,3399.4 v -76.51"
+         stroke="#ffffff"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path45" />
+    </g>
+    <g
+       transform="matrix(0,0.17080775,-0.17080775,0,2215.8339,323.818)"
+       class="interactive-element"
+       data-equipamento="VRP"
+       data-nome="VRP VRP de Ação Direta (189276)"
+       data-nomenclatura="VRP de Ação Direta (189276)"
+       data-status="Em Operação"
+       data-diametro="50 mm"
+       data-ligacoes="xxxxx"
+       data-pressao-jusante="10 mca"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/1359/VCP%20A%c3%87%c3%83O%20DIRETA%20189276%20-%20CAS%20CH%2053.png"
+       data-id="189276"
+       data-conexoes="5288721"
+       id="g53">
+      <path
+         d="m 13039.8,3361.14 c 0,-6.21 -1.2,-12.37 -3.5,-18.11 -2.4,-5.74 -5.9,-10.96 -10.3,-15.36 -4.4,-4.39 -9.6,-7.88 -15.3,-10.26 -5.8,-2.38 -11.9,-3.61 -18.1,-3.61 -6.2,0 -12.4,1.23 -18.1,3.61 -5.8,2.38 -11,5.87 -15.4,10.26 -4.3,4.4 -7.8,9.62 -10.2,15.36 -2.4,5.74 -3.6,11.9 -3.6,18.11 0,6.21 1.2,12.37 3.6,18.11 2.4,5.74 5.9,10.96 10.2,15.36 4.4,4.4 9.6,7.88 15.4,10.26 5.7,2.38 11.9,3.61 18.1,3.61 6.2,0 12.3,-1.23 18.1,-3.61 5.7,-2.38 10.9,-5.86 15.3,-10.26 4.4,-4.4 7.9,-9.62 10.3,-15.36 2.3,-5.74 3.5,-11.9 3.5,-18.11 z"
+         stroke="#ffff64"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path50" />
+      <path
+         d="m 13036.7,3361.15 -66.2,-38.26"
+         stroke="#ffffff"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path51" />
+      <path
+         d="m 13036.7,3361.15 -66.2,38.25"
+         stroke="#ffffff"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path52" />
+      <path
+         d="m 12970.5,3399.4 v -76.51"
+         stroke="#ffffff"
+         stroke-width="7"
+         stroke-linecap="round"
+         id="path53" />
     </g>
   </g>
 </svg>
