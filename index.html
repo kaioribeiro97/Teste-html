@@ -363,7 +363,7 @@
     <!-- Seção do Gráfico no Painel Lateral -->
     <div id="chart-section">
         <div class="chart-header">
-            <h3>Histórico de Pressões</h3>
+            <h3>Histórico de Dados</h3>
             <div class="chart-actions">
                 <button class="icon-btn" onclick="baixarGrafico()" title="Baixar PNG">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4M7 10l5 5 5-5M12 15V3"/></svg>
@@ -406,7 +406,7 @@
     const imgElement = document.getElementById('item-imagem');
     
     const svgFileName = 'VCP2 1.svg';
-    const csvFileName = 'media_pressoes_ultima_semana.csv';
+    const csvFileName = 'consolidado_monitoramento.csv';
 
     let scale = 1;
     let isDragging = false;
@@ -419,17 +419,17 @@
 
     // --- FUNÇÕES DE DADOS ---
 
-    async function atualizarGrafico(nomenclatura) {
-        if (!nomenclatura) return;
+    async function atualizarGrafico(nomenclatura, nomMacro) {
+        if (!nomenclatura && !nomMacro) return;
         try {
             const response = await fetch(csvFileName);
             if (!response.ok) throw new Error("Erro ao carregar CSV");
             
             const text = await response.text();
             const lines = text.split('\n');
-            const labels = [];
-            const dataMontante = [];
-            const dataJusante = [];
+            
+            // Usaremos um objeto para agrupar os dados por tempo e garantir alinhamento
+            const groupedData = {};
 
             for (let i = 1; i < lines.length; i++) {
                 const line = lines[i].trim();
@@ -441,68 +441,147 @@
                 const vrpCsv = cols[1].trim();
                 const caracteristica = cols[2].trim();
                 const tempo = cols[3].trim();
+                // Converte valor tratando a vírgula decimal
                 const valor = parseFloat(cols[4].replace(',', '.'));
 
-                if (vrpCsv === nomenclatura || tagCsv === nomenclatura) {
-                    const d = new Date(tempo);
-                    const lbl = `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
-                    
-                    if (!labels.includes(lbl)) labels.push(lbl);
-                    if (caracteristica === 'Montante') dataMontante.push(valor);
-                    else if (caracteristica === 'Jusante') dataJusante.push(valor);
+                // Verifica se a linha pertence ao equipamento clicado via nomenclatura principal ou macro
+                const matchPressao = nomenclatura && (vrpCsv === nomenclatura || tagCsv === nomenclatura);
+                const matchVazao = nomMacro && (vrpCsv === nomMacro || tagCsv === nomMacro);
+
+                if (matchPressao || matchVazao) {
+                    if (!groupedData[tempo]) {
+                        groupedData[tempo] = { montante: null, jusante: null, vazao: null };
+                    }
+
+                    if (caracteristica.includes('Montante') && matchPressao) {
+                        groupedData[tempo].montante = valor;
+                    } else if (caracteristica.includes('Jusante') && matchPressao) {
+                        groupedData[tempo].jusante = valor;
+                    } else if (caracteristica.includes('Vazão')) {
+                        // Se for vazão, salva se vier do matchVazao OU se a tag principal tiver vazão
+                        if (matchVazao || matchPressao) {
+                            groupedData[tempo].vazao = valor;
+                        }
+                    }
                 }
             }
 
+            // Ordenar os tempos cronologicamente
+            const sortedTimes = Object.keys(groupedData).sort();
+            
+            const labels = [];
+            const dataMontante = [];
+            const dataJusante = [];
+            const dataVazao = [];
+
+            sortedTimes.forEach(tempo => {
+                const d = new Date(tempo);
+                const lbl = `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+                
+                labels.push(lbl);
+                dataMontante.push(groupedData[tempo].montante);
+                dataJusante.push(groupedData[tempo].jusante);
+                dataVazao.push(groupedData[tempo].vazao);
+            });
+
             if (labels.length > 0) {
-                lastChartData = { labels, montante: dataMontante, jusante: dataJusante, title: nomenclatura };
-                renderizarCanvas('pressureChart', labels, dataMontante, dataJusante);
+                // Monta um título combinado caso tenha as duas referências
+                let titleParts = [];
+                if (nomenclatura) titleParts.push(nomenclatura);
+                if (nomMacro && nomMacro !== nomenclatura) titleParts.push(nomMacro);
+                
+                lastChartData = { 
+                    labels, 
+                    montante: dataMontante, 
+                    jusante: dataJusante, 
+                    vazao: dataVazao, 
+                    title: titleParts.join(' / ') 
+                };
+                renderizarCanvas('pressureChart', lastChartData);
                 chartSection.style.display = 'block';
             } else {
                 chartSection.style.display = 'none';
                 lastChartData = null;
             }
         } catch (error) {
-            console.error(error);
+            console.error("Erro no gráfico:", error);
             chartSection.style.display = 'none';
         }
     }
 
-    function renderizarCanvas(canvasId, labels, montante, jusante, isExpanded = false) {
+    function renderizarCanvas(canvasId, chartData, isExpanded = false) {
         const ctx = document.getElementById(canvasId).getContext('2d');
+        
+        // Define quais datasets vamos mostrar baseado no que tem dados
+        const datasets = [];
+        const hasPressao = chartData.montante.some(v => v !== null) || chartData.jusante.some(v => v !== null);
+        const hasVazao = chartData.vazao && chartData.vazao.some(v => v !== null);
+        
+        if (chartData.montante.some(v => v !== null)) {
+            datasets.push({
+                label: 'Montante',
+                data: chartData.montante,
+                yAxisID: 'y', // Mesmo eixo para todos
+                borderColor: '#0056b3',
+                backgroundColor: 'rgba(0, 86, 179, 0.08)',
+                borderWidth: isExpanded ? 3 : 2,
+                pointRadius: isExpanded ? 3 : 0,
+                tension: 0.3,
+                fill: true
+            });
+        }
+
+        if (chartData.jusante.some(v => v !== null)) {
+            datasets.push({
+                label: 'Jusante',
+                data: chartData.jusante,
+                yAxisID: 'y', // Mesmo eixo para todos
+                borderColor: '#ff4d4d',
+                backgroundColor: 'rgba(255, 77, 77, 0.08)',
+                borderWidth: isExpanded ? 3 : 2,
+                pointRadius: isExpanded ? 3 : 0,
+                tension: 0.3,
+                fill: true
+            });
+        }
+
+        // Caso o equipamento tenha dados de Vazão
+        if (hasVazao) {
+            datasets.push({
+                label: 'Vazão',
+                data: chartData.vazao,
+                yAxisID: 'y', // Mantém no mesmo eixo
+                borderColor: '#2e7d32',
+                backgroundColor: 'rgba(46, 125, 50, 0.08)',
+                borderWidth: isExpanded ? 3 : 2,
+                pointRadius: isExpanded ? 3 : 0,
+                tension: 0.3,
+                fill: true
+            });
+        }
+
         const config = {
             type: 'line',
             data: {
-                labels: labels,
-                datasets: [
-                    {
-                        label: 'Montante',
-                        data: montante,
-                        borderColor: '#0056b3',
-                        backgroundColor: 'rgba(0, 86, 179, 0.08)',
-                        borderWidth: isExpanded ? 3 : 2,
-                        pointRadius: isExpanded ? 3 : 0,
-                        tension: 0.3,
-                        fill: true
-                    },
-                    {
-                        label: 'Jusante',
-                        data: jusante,
-                        borderColor: '#ff4d4d',
-                        backgroundColor: 'rgba(255, 77, 77, 0.08)',
-                        borderWidth: isExpanded ? 3 : 2,
-                        pointRadius: isExpanded ? 3 : 0,
-                        tension: 0.3,
-                        fill: true
-                    }
-                ]
+                labels: chartData.labels,
+                datasets: datasets
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 interaction: { intersect: false, mode: 'index' },
                 scales: {
-                    y: { beginAtZero: true, title: { display: true, text: 'mca', font: { weight: 'bold' } } },
-                    x: { ticks: { maxTicksLimit: isExpanded ? 20 : 6, font: { size: 10 } } }
+                    x: { 
+                        ticks: { maxTicksLimit: isExpanded ? 20 : 6, font: { size: 10 } } 
+                    },
+                    y: { 
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        beginAtZero: true, 
+                        // Título genérico já que comporta ambas as grandezas
+                        title: { display: true, text: 'Valor', font: { weight: 'bold' } } 
+                    }
                 },
                 plugins: {
                     legend: { position: 'bottom' }
@@ -523,19 +602,22 @@
 
     function abrirModalGrafico() {
         if (!lastChartData) return;
-        document.getElementById('modal-title').innerText = `Histórico de Pressão: ${lastChartData.title}`;
+        document.getElementById('modal-title').innerText = `Histórico Detalhado: ${lastChartData.title}`;
         modal.style.display = 'flex';
         setTimeout(() => {
-            renderizarCanvas('expandedChart', lastChartData.labels, lastChartData.montante, lastChartData.jusante, true);
+            renderizarCanvas('expandedChart', lastChartData, true);
         }, 100);
     }
 
     function fecharModalGrafico() { modal.style.display = 'none'; }
 
     function baixarGrafico(fromModal = false) {
+        if (!lastChartData) return;
         const canvas = document.getElementById(fromModal ? 'expandedChart' : 'pressureChart');
         const link = document.createElement('a');
-        link.download = `pressao_${lastChartData?.title || 'equipamento'}.png`;
+        // Nome de arquivo higienizado
+        const cleanTitle = (lastChartData.title || 'equipamento').replace(/[^a-zA-Z0-9.-]/g, '_');
+        link.download = `dados_${cleanTitle}.png`;
         link.href = canvas.toDataURL('image/png');
         link.click();
     }
@@ -543,12 +625,18 @@
     // --- MAPA E INTERAÇÃO ---
 
     function carregarSVG() {
-        fetch(svgFileName).then(res => res.text()).then(svgData => {
-            svgWrapper.innerHTML = svgData;
-            ajustarTamanhoInicial();
-            updateTransform();
-            ativarInteratividade();
-        });
+        fetch(svgFileName)
+            .then(res => res.text())
+            .then(svgData => {
+                svgWrapper.innerHTML = svgData;
+                ajustarTamanhoInicial();
+                updateTransform();
+                ativarInteratividade();
+            })
+            .catch(err => {
+                console.error("Erro a carregar SVG", err);
+                document.getElementById('loading-text').innerText = "Erro ao carregar o mapa SVG.";
+            });
     }
 
     function ativarInteratividade() {
@@ -561,6 +649,7 @@
                 const equip = data.equipamento;
                 const nom = data.nomenclatura || data.id;
                 const nomVrp = data.nomenclaturaVrp;
+                const nomMacro = data.nomenclaturaMacro; // Puxa o nome do macromedidor para vazão
 
                 destacarConexoesEmCadeia(el);
 
@@ -598,20 +687,24 @@
                     add('Pressão Montante', data.pressaoMontante);
                     add('Pressão Jusante', data.pressaoJusante);
                     add('Nº Ligações', data.ligacoes);
-                    atualizarGrafico(nomVrp || nom);
-                } else {
-                    chartSection.style.display = 'none';
-                    if (equip === 'Reservatório') {
-                        add('Sistema', data.sistema);
-                        add('Volume Total', data.volumeTotal);
-                        add('Volume Operação', data.volumeOperacao);
-                    } else if (equip === 'Booster') {
-                        add('Pressão Jusante', data.pressaoJusante);
-                    }
+                } else if (equip === 'Reservatório') {
+                    add('Sistema', data.sistema);
+                    add('Volume Total', data.volumeTotal);
+                    add('Volume Operação', data.volumeOperacao);
+                } else if (equip === 'Booster') {
+                    add('Pressão Jusante', data.pressaoJusante);
                 }
 
                 campos.innerHTML = html;
                 panel.classList.add('active');
+
+                // Atualiza o gráfico se existir alguma nomenclatura atrelada a esse componente
+                const targetNom = nomVrp || nom;
+                if (targetNom || nomMacro) {
+                    atualizarGrafico(targetNom, nomMacro);
+                } else {
+                    chartSection.style.display = 'none';
+                }
             });
         });
     }

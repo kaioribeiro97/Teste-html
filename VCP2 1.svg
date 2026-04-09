@@ -27,14 +27,14 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
-     inkscape:zoom="1.076"
-     inkscape:cx="824.34944"
-     inkscape:cy="844.33085"
-     inkscape:window-width="1920"
-     inkscape:window-height="1009"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
+     inkscape:zoom="0.38042345"
+     inkscape:cx="2641.793"
+     inkscape:cy="914.77011"
+     inkscape:window-width="1150"
+     inkscape:window-height="1000"
+     inkscape:window-x="953"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
      inkscape:current-layer="layer1"
      showguides="false" />
   <defs
@@ -424,7 +424,7 @@
        data-ligacoes="198"
        data-pressao-jusante="15 mca"
        data-pressao-montante="35 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/1078/resized-ddd5b7a6-7164-464b-9870-c566d60f06e9.jpg"
        data-id="158887"
        data-conexoes="5302341"
        id="g6">
@@ -2413,11 +2413,11 @@
        data-id="206495"
        id="rect32" />
     <rect
-       style="fill:#000000;stroke-width:0.670875"
+       style="fill:#000000;stroke-width:0.686845"
        id="rect143"
-       width="86.808769"
+       width="90.990929"
        height="1.3015785"
-       x="704.1228"
+       x="700.40533"
        y="1994.7302"
        transform="matrix(0,1,1,0,0,0)" />
     <rect
@@ -2478,22 +2478,6 @@
          x="2273.1233"
          y="873.94946"
          style="font-size:8px;fill:#000000;fill-opacity:1">VSJ RUA 13</tspan></text>
-    <rect
-       style="fill:#000000;stroke-width:0.68306"
-       id="rect149"
-       width="89.990753"
-       height="1.3015785"
-       x="700.9408"
-       y="1994.7302"
-       transform="matrix(0,1,1,0,0,0)" />
-    <rect
-       style="fill:#000000;fill-opacity:1;stroke-width:1.08753"
-       id="rect150"
-       width="228.11789"
-       height="1.3015785"
-       x="-2222.8806"
-       y="790.0332"
-       transform="scale(-1,1)" />
     <rect
        style="fill:#000000;stroke-width:0.45668"
        id="rect152"
@@ -2703,7 +2687,6 @@
        data-ligacoes="433"
        data-pressao-jusante="15 mca"
        data-pressao-montante="30 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
        data-id="166467"
        data-conexoes="5236827"
        id="g33">
@@ -2743,7 +2726,7 @@
        data-ligacoes="2300"
        data-pressao-jusante="15 mca"
        data-pressao-montante="30 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/478/resized-3b25feb2-c540-4b6c-a4a3-f7600fba4e40.jpg"
        data-id="77430"
        data-conexoes="6718779"
        id="g34">
@@ -2783,7 +2766,7 @@
        data-ligacoes="649"
        data-pressao-jusante="12 mca"
        data-pressao-montante="35 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/480/resized-d4b53bb9-eeb8-409b-8e80-dc6776bde0a4.jpg"
        data-id="110657"
        data-conexoes="525129"
        id="g35">
@@ -2863,7 +2846,7 @@
        data-ligacoes="157"
        data-pressao-jusante="10 mca"
        data-pressao-montante="50 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/716/resized-4d953d41-0d37-4f50-a7d3-fd3c01a66b7c.jpg"
        data-id="127656"
        data-conexoes="74193"
        id="g37">
@@ -2904,7 +2887,7 @@
        data-pressao-jusante="08 mca"
        data-pressao-montante="40 mca"
        data-vrps-conectadas="VRP.VCP.046"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/568/e40d3ff4-da7d-4c51-834d-40de7795eef3.jpg"
        data-id="165467"
        id="g38"
        data-conexoes="5344603, 165269">
@@ -2945,7 +2928,7 @@
        data-pressao-jusante="15 mca"
        data-pressao-montante="35 mca"
        data-vrps-conectadas="VRP.VCP.040, VRP.VCP.041"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/516/resized-5d3627b0-f024-4ea8-b9bc-348561257658.jpg"
        data-id="54630"
        data-conexoes="206495,122451,507063,127656,74193"
        id="g39">
@@ -2984,7 +2967,7 @@
        data-diametro="50 mm"
        data-ligacoes="116"
        data-pressao-montante="55 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/563/5b58dd20-12a4-4d21-b513-a0af9b01a297.jpg"
        data-id="4805"
        id="g40"
        data-conexoes="7742636"
@@ -3026,7 +3009,7 @@
        data-pressao-jusante="15 mca"
        data-pressao-montante="30 mca"
        data-vrps-conectadas="VRP.VCP.017/VZ6.SAT.VCP.014, VRP.VCP.018, VRP.VCP.019/VZ7.SAT.VCP.014, VRP.VCP.020, VRP.VCP.021, VRP.VCP.046, VRP.VCP.006, VRP.VCP.038/VZ1.DMC.VCP.038, VRP.VCP.044, VRP.VCP.023, VRP.VCP.036/VZ3.SAT.VCP.014, VRP.VCP.027, VRP.VCP.022, VRP.VCP.037, 114651,189276, VRP.VCP.042, VRP.VCP.048,VRP.VCP.007,VRP.VCP.045, VRP.VCP.008/VZ4.SAT.VCP.014, 191878, 216878"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/445/resized-7009e726-4357-43aa-84a6-2b1cc6bae8ba.jpg&#10;"
        data-id="4809"
        id="g41"
        data-conexoes="5634776,158871,145071,145069">
@@ -3066,7 +3049,7 @@
        data-ligacoes="224"
        data-pressao-jusante="12 mca"
        data-pressao-montante="35 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/447/resized-c8b7f146-0063-40f3-acfa-3ffc40b1e4d6.jpg&#10;"
        data-id="4808"
        id="g42"
        data-conexoes="5360005">
@@ -3106,7 +3089,7 @@
        data-ligacoes="230"
        data-pressao-jusante="30 mca"
        data-pressao-montante="40 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/1334/WhatsApp%20Image%202026-03-26%20at%2010.02.30.jpeg"
        data-id="269678"
        data-conexoes="5364906"
        id="g43">
@@ -3186,7 +3169,7 @@
        data-ligacoes="9535"
        data-pressao-jusante="25 mca"
        data-pressao-montante="95 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/471/resized-278744d6-75b9-4796-be09-b57f00c6fb14.jpg"
        data-id="4814"
        data-vrps-conectadas="VRP.VCP.011, VRP.VCP.047, VRP.VCP.012, VRP.VCP.034, VRP.VCP.039, VRP.VCP.013"
        data-conexoes="5082862,6781926,161367,166467,5236827,5390,5247985,77430,6718779,110657,525129,5252377,107456"
@@ -3262,8 +3245,8 @@
        inkscape:transform-center-y="-46.493962"
        class="interactive-element"
        data-equipamento="VRP/Macro"
-       data-nome="VRP/Macro VRP.VCP.032/VZ1.SAT. VCP. 011"
-       data-nomenclatura="VRP.VCP.032/VZ1.SAT. VCP. 011"
+       data-nome="VRP/Macro VRP.VCP.032/VZ1.SAT.VCP.011"
+       data-nomenclatura="VRP.VCP.032/VZ1.SAT.VCP.011"
        data-nomenclatura-vrp="VRP.VCP.032"
        data-status="Em Operação"
        data-diametro="150 mm"
@@ -3276,8 +3259,9 @@
        data-dmc="DMC.VCP.009"
        data-id="58630"
        data-conexoes="371074,64732,297370"
-       data-nomenclatura-macro="VZ1.SAT. VCP. 011"
-       id="g47">
+       data-nomenclatura-macro="VZ1.SAT.VCP.011"
+       id="g47"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/465/resized-3006f76c-72b3-4d3d-8b6e-70039f2d983a.jpg">
       <g
          id="g46-4-1"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -3440,22 +3424,6 @@
          x="1984.394"
          y="1059.3"
          style="font-size:5.33333px;fill:#000000;fill-opacity:1" /></text>
-    <rect
-       style="fill:#000000;stroke-width:0.670875"
-       id="rect49"
-       width="86.808769"
-       height="1.3015785"
-       x="704.1228"
-       y="1994.7302"
-       transform="matrix(0,1,1,0,0,0)" />
-    <rect
-       style="fill:#000000;fill-opacity:1;stroke-width:1.08753"
-       id="rect50"
-       width="228.11789"
-       height="1.3015785"
-       x="-2222.8806"
-       y="790.0332"
-       transform="scale(-1,1)" />
     <text
        xml:space="preserve"
        style="font-size:8px;writing-mode:lr-tb;direction:ltr;fill:#2d20ff;fill-opacity:1;stroke:none;stroke-width:3;stroke-dasharray:none;stroke-opacity:1"
@@ -3539,7 +3507,7 @@
        data-ligacoes="147"
        data-pressao-jusante="15 mca"
        data-pressao-montante="30 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/494/resized-7a54e7e1-6308-4475-98e0-94c1ca30b2ea.jpg"
        data-id="58733"
        data-conexoes="5169739"
        id="g51">
@@ -3839,7 +3807,7 @@
        data-ligacoes="677"
        data-pressao-jusante="30 mca"
        data-pressao-montante="60 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/541/resized-9d8fbf46-167f-417a-8870-35c0594cc0c3.jpg"
        data-id="37421"
        data-conexoes="5186641"
        id="g62">
@@ -3943,7 +3911,7 @@
        data-pressao-jusante="25 mca"
        data-pressao-montante="55 mca"
        data-vrps-conectadas="VRP.VCP.005 B, VRP.VCP.030, VRP.VCP.014"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/518/a4e05113-60b0-4e6e-ae2e-03c93ee1f5c9.jpg"
        data-id="5810"
        id="g1-5"
        data-conexoes="5811">
@@ -3994,7 +3962,7 @@
        data-ligacoes="292"
        data-pressao-jusante="15 mca"
        data-pressao-montante="35 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/542/resized-178d9582-8d71-46f6-85ad-a5a0cac2b9b3.jpg"
        data-id="4584"
        data-conexoes="5266367"
        id="g64">
@@ -4161,7 +4129,7 @@
        data-ligacoes="941"
        data-pressao-jusante="25 mca"
        data-pressao-montante="40 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/544/resized-a1f1af58-8e92-4c82-a9f2-47e45db1b803.jpg"
        data-id="44631"
        data-conexoes="636881"
        id="g66">
@@ -4239,7 +4207,7 @@
        data-pressao-jusante="22 mca"
        data-pressao-montante="50 mca"
        data-vrps-conectadas="VRP.VCP.038/VZ1.DMC.VCP.038, VRP.VCP.044, VRP.VCP.023, VRP.VCP.036/VZ3.SAT.VCP.014, VRP.VCP.027, VRP.VCP.022, VRP.VCP.037, 114651,189276, VRP.VCP.042, VRP.VCP.048,VRP.VCP.007,VRP.VCP.045, VRP.VCP.008/VZ4.SAT.VCP.014, 191878, 216878"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/573/f18fe97d-57ba-4b7a-a815-80577c237a94.jpg"
        data-id="145069"
        data-conexoes="107949,160067,5315646,4810,97948,81434"
        id="g67">
@@ -4451,7 +4419,7 @@
        data-pressao-jusante="15 mca"
        data-pressao-montante="50 mca"
        data-vrps-conectadas="VRP.VCP.022"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/548/resized-665b3a7c-9207-45fb-9d73-f2510a88b744.jpg"
        data-id="6657"
        data-conexoes="4755, 5323509"
        id="g69">
@@ -4491,7 +4459,7 @@
        data-ligacoes="296"
        data-pressao-jusante="15 mca"
        data-pressao-montante="40 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/546/resized-505edb87-767a-4d3b-9061-a6d70f3f5a41.jpg"
        data-id="4755"
        data-conexoes="5329302"
        data-daynight="5 mca das 22 h às 06 h"
@@ -4596,7 +4564,8 @@
        data-id="158867"
        data-conexoes="595729"
        data-nomenclatura-macro="VZ3.SAT.VCP.011"
-       id="g72">
+       id="g72"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/469/resized-08296ab7-ddef-4b0b-8d45-555cdc77de74.jpg">
       <g
          id="g46-4-1-7"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -4651,7 +4620,8 @@
        data-id="161367"
        data-conexoes="166467,6781926,5236827"
        data-nomenclatura-macro="VZ4.SAT.VCP.011"
-       id="g73">
+       id="g73"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/473/f8e6d1b6-c07c-4a13-ba7c-9bfca27f152c.jpg">
       <g
          id="g46-4-1-9"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -4705,7 +4675,8 @@
        data-id="5390"
        data-conexoes="5247985,110657,525129,77430,6718779"
        data-nomenclatura-macro="VZ5.SAT.VCP.011"
-       id="g74">
+       id="g74"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/476/cf3c2945-47b7-4082-ad3d-e938660b8c89.jpg">
       <g
          id="g46-4-1-8"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -4811,7 +4782,8 @@
        data-id="7074"
        data-nomenclatura-macro="VZ1.DMC.VCP.004"
        data-conexoes="5162408, 269678, 5364906"
-       id="g76">
+       id="g76"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/561/e91bfc9b-9dc9-45e5-920d-ec5ac89dda2c.jpg">
       <g
          id="g46-4-1-5"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -4864,7 +4836,8 @@
        data-dmc="VRP.DMC.005"
        data-id="158871"
        id="g77"
-       data-conexoes="6333575, 4808">
+       data-conexoes="6333575, 4808"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/570/cd811021-08ed-4a1a-bc3b-29ccd0cbdefa.jpg">
       <g
          id="g46-4-1-4"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -4917,7 +4890,8 @@
        data-id="145071"
        id="g78"
        data-nomenclatura-macro="VZ7.SAT.VCP.014"
-       data-conexoes="7103581,4805,165467">
+       data-conexoes="7103581,4805,165467"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/488/resized-a578000a-6ce3-4cbd-bb66-37ab511ca98c.jpg">
       <g
          id="g46-4-1-2"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -5111,7 +5085,7 @@
        data-ligacoes="106"
        data-pressao-jusante="15 mca"
        data-pressao-montante="50 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/552/b7d36b2f-7a7c-4739-9284-70c1ed6f562d.jpg"
        data-id="4810"
        data-conexoes="5311136"
        id="g80">
@@ -5245,8 +5219,8 @@
        style="fill:#ffffff;fill-opacity:1;stroke:#00106a;stroke-width:2.09247;stroke-dasharray:none;stroke-opacity:1"
        width="147.11943"
        height="52.769978"
-       x="1275.4275"
-       y="2370.1172"
+       x="1275.4358"
+       y="2367.6836"
        data-id="5294401"
        id="rect83" />
     <text
@@ -5308,7 +5282,7 @@
        data-pressao-jusante="12 mca"
        data-pressao-montante="25 mca"
        data-vrps-conectadas="VRP de Ação Direta (114651)"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/576/a6dec298-d79f-4cb8-a9d4-36c32e27fb6e.jpg&#10;"
        data-id="102351"
        data-conexoes="5294029,114651"
        id="g83">
@@ -5396,7 +5370,8 @@
        data-dmc="DMC.VCP.002"
        data-id="81434"
        data-conexoes="5293821,102351,4803,158265"
-       id="g85">
+       id="g85"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/557/a18b575d-d4bf-44df-aee6-769704bf43a9.jpg">
       <g
          id="g260"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -5489,7 +5464,8 @@
        data-dmc="DMC.VCP.038"
        data-id="107949"
        data-conexoes="5341329"
-       id="g86">
+       id="g86"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/573/f18fe97d-57ba-4b7a-a815-80577c237a94.jpg">
       <g
          id="g46-4-1-0"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -5712,7 +5688,7 @@
        data-ligacoes="153"
        data-pressao-jusante="12 mca"
        data-pressao-montante="22 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/1285/resized-a4b17e60-c4da-4ce7-8e1e-0be80e54a25b.jpg"
        data-id="237777"
        data-conexoes="5287227"
        id="g89">
@@ -6012,7 +5988,8 @@
        data-dmc="DMC.VCP.001"
        data-id="158265"
        data-conexoes="5310539,4789"
-       id="g92">
+       id="g92"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/1077/resized-f0cf7105-25a7-46f5-b07d-4d4837524bce.jpg">
       <g
          id="g266-1"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -6144,7 +6121,8 @@
        data-id="158874"
        data-conexoes="6718469, 216878,191878"
        data-nomenclatura-macro="VZ4.SAT.VCP.014"
-       id="g93">
+       id="g93"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/581/3c5c9a0f-3af6-46f4-a9d0-68572603b640.jpg">
       <g
          id="g327"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -6189,7 +6167,7 @@
        data-pressao-jusante="10 mca"
        data-pressao-montante="21 mca"
        data-vrps-conectadas="VRP.VCP.045, VRP.VCP.008/VZ4.SAT.VCP.014, 191878, 216878"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/582/bd638021-852f-4072-bb9d-f88655a47dd5.jpg"
        data-id="4789"
        data-conexoes="5302544,158887,158874"
        data-daynight="10 mca das 22 h às 06 h"
@@ -6276,7 +6254,8 @@
        data-dmc="DMC.VCP.008"
        data-id="4803"
        data-conexoes="189276,5289211,128982"
-       id="g95">
+       id="g95"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/578/d48f14e7-6c49-4ce1-b10d-242cd60a55b8.jpg">
       <g
          id="g266"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -6326,7 +6305,7 @@
        data-ligacoes="3888"
        data-pressao-jusante="15 mca"
        data-pressao-montante="30 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/492/fdec4903-94ca-4519-bc0f-80398f5c9c49.jpg"
        data-id="5901"
        id="g1"
        data-conexoes="6295551">
@@ -6375,7 +6354,8 @@
        data-id="177079"
        data-nomenclatura-macro="VZ4.SAT.VCP.011"
        data-conexoes="45024,6782643,615726,5900,5901,6295551"
-       id="g96">
+       id="g96"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/450/resized-0f236831-5564-4545-a49f-badbd218fd96.jpg">
       <g
          id="g46-4-1-6"
          transform="matrix(13.972988,0,0,13.972988,-2751.0302,1165.071)">
@@ -6604,7 +6584,7 @@
        data-ligacoes="148"
        data-pressao-jusante="15 mca"
        data-pressao-montante="45 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/715/resized-277ad90c-f03b-44e4-89ad-8bb1ad1a8ebf.jpg"
        data-id="122451"
        data-conexoes="507063"
        id="g97">
@@ -6645,7 +6625,7 @@
        data-pressao-jusante="30 mca"
        data-pressao-montante="60 mca"
        data-vrps-conectadas="VRP.VCP.004 B"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/491/e6f4c46a-b613-402a-a129-a9d833ad94ff.jpg"
        data-id="5900"
        data-conexoes="5901,6295551"
        id="g98">
@@ -6685,7 +6665,7 @@
        data-ligacoes="454"
        data-pressao-jusante="15 mca"
        data-pressao-montante="40 mca"
-       data-imagem="https://www.semae.rs.gov.br/wp-content/uploads/2019/08/04072019_151308.jpg"
+       data-imagem="https://caesbdfgovbr.sharepoint.com/sites/formulariospasp/Lists/Lista%20de%20VRP/Attachments/493/resized-30d98c7b-466d-4330-997a-83a0afbd4033.jpg"
        data-id="45024"
        data-conexoes="6782643"
        id="g99">
