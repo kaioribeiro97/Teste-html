@@ -405,7 +405,7 @@
     const imgContainer = document.getElementById('image-container');
     const imgElement = document.getElementById('item-imagem');
     
-    const svgFileName = 'VCP2 1.svg';
+    const svgFileName = 'Paranoa.svg';
     const csvFileName = 'consolidado_monitoramento.csv';
 
     let scale = 1;
@@ -693,6 +693,11 @@
                     add('Volume Operação', data.volumeOperacao);
                 } else if (equip === 'Booster') {
                     add('Pressão Jusante', data.pressaoJusante);
+                    add('Diâmetro', data.diametro);
+                }else if (equip === 'Elevatória de poço') {
+                    add('Vazão Operacional', data.vazaoOperacional);
+                    add('Vazão Projeto', data.vazaoProjeto);
+                    add('Profundidade', data.profundidade);
                 }
 
                 campos.innerHTML = html;
